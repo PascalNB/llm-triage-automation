@@ -1001,12 +1001,12 @@
 }
 \let\@period=.
 \def\@startsection#1#2#3#4#5#6{%
-        \if@noskipsec  %gkmt, 11 aug 99
+    \if@noskipsec  %gkmt, 11 aug 99
         \global\let\@period\@empty
         \leavevmode
         \global\let\@period.%
     \fi
-      \par %
+    \par %
     \@tempskipa #4\relax
     \@afterindenttrue
     \ifdim \@tempskipa <\z@
@@ -1014,12 +1014,12 @@
         \@afterindentfalse
     \fi
     \if@nobreak
-    \everypar{}%
+        \everypar{}%
     \else
         \addpenalty\@secpenalty
         \addvspace\@tempskipa
     \fi
-\parskip=0pt % GM July 2000 (non numbered) section heads
+    \parskip=0pt % GM July 2000 (non numbered) section heads
     \@ifstar
         {\@ssect{#3}{#4}{#5}{#6}}
         {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}%
@@ -1055,7 +1055,7 @@
             \endgroup
         \endgroup
         \csname #1mark\endcsname{#7}%
-        \vskip -12pt  %gkmt, 11 aug 99 and GM July 2000 (was -14) - numbered section head spacing
+%        \vskip -12pt  %gkmt, 11 aug 99 and GM July 2000 (was -14) - numbered section head spacing
 \addcontentsline{toc}{#1}{%
             \ifnum #2>\c@secnumdepth \else
                 \protect\numberline{\csname the#1\endcsname}%
@@ -1255,7 +1255,7 @@
 \ifnum\addauflag=0\addauthorsection\global\addauflag=1\fi
      \section[References]{%    <=== OPTIONAL ARGUMENT ADDED HERE
         {References} % was uppercased but this affects pdf bookmarks (SP/GM October 2004)
-          {\vskip -9pt plus 1pt} % GM Nov. 2006 / GM July 2000 (for somewhat tighter spacing) 
+          {\vskip -9pt plus 1pt} % GM Nov. 2006 / GM July 2000 (for somewhat tighter spacing)
          \@mkboth{{\refname}}{{\refname}}%
      }%
      \list{[\arabic{enumi}]}{%

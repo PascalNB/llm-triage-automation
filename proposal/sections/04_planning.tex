@@ -15,44 +15,37 @@ Here we have an overview of the deadlines:
 \end{itemize}
 The planning is made in order to adhere to these submission deadlines.
 
-% More examples on how to do a planning table you can see in \url{http://www.martin-kumm.de/wiki/doku.php?id=05Misc:A_LaTeX_package_for_gantt_plots}
-
 \begin{figure}[ht]
-    \noindent\resizebox{0.49\textwidth}{!}{
-        \begin{gantt}[xunitlength=0.5cm,fontsize=\small,titlefontsize=\small,drawledgerline=true]{15}{12} %(1)lines (2)columns
+    \begin{center}
+        \scalebox{1}{
+            \begin{ganttchart}[
+                y unit title=0.7cm,
+                y unit chart=0.7cm,
+                x unit=0.5cm,
+                vgrid,hgrid,
+                title label anchor/.style={below=-1.6ex},
+                title height=1,
+                progress label text={},
+                bar height=0.7,
+                group right shift=0,
+                group top shift=.6,
+                group height=.3]{1}{10}
 
-            \begin{ganttitle} %Month
-                \titleelement{\textbf{Planning Table}}{12}
-            \end{ganttitle}
-
-            \begin{ganttitle} %Month
-                \titleelement{November}{3}
-                \titleelement{December}{5}
-                \titleelement{January}{4}
-            \end{ganttitle}
-
-            \begin{ganttitle} % Week number
-                \numtitle{1}{1}{12}{1}
-            \end{ganttitle}
-
-            \ganttbar[color=gray]{Proposal}{0}{3}
-            \ganttmilestone[color=orange]{Draft proposal}{2}
-            \ganttmilestone[color=red]{Final proposal}{3}
-            \ganttbar[pattern=grid,color=orange]{Writing}{3}{8}
-            \ganttbar[color=blue]{RQ1}{3}{1}
-            \ganttcon{3}{3}{3}{7}
-            \ganttbarcon[color=blue]{RQ2}{4}{2}
-            \ganttbar[pattern=grid,color=red]{Holidays}{6}{2}
-            \ganttbar[color=blue]{RQ3}{8}{2}
-            \ganttcon{6}{8}{8}{10}
-            \ganttbarcon[color=blue]{RQ4}{10}{1}
-            \ganttmilestone[color=orange]{Draft Paper submission}{10}
-            \ganttmilestone[color=red]{Final Paper submission}{11}
-            \ganttbar[color=green]{Presentation}{11}{1}
-            \ganttcon{11}{11}{11}{14}
-
-        \end{gantt}
-    }
+                %labels
+                \gantttitle{Month}{10} \\
+                \gantttitle{May}{5}
+                \gantttitle{June}{4}
+                \gantttitle{July}{1} \\
+                \gantttitle{Week}{10} \\
+                \gantttitlelist{1,...,10}{1} \\
+                %tasks
+                \ganttgroup{Writing}{1}{10} \\
+                \ganttbar{Research Proposal}{1}{2} \\
+                \ganttbar{Research Proposal}{1}{2} \\
+            \end{ganttchart}
+        }
+    \end{center}
+    \caption{Gantt Chart}
     \label{fig:figure2}
 \end{figure}
 

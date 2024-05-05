@@ -1,11 +1,17 @@
+%! Author = Pascal Bakker
+%! Date = 04/05/2024
+
 %-------------------------------------------------------------------------------
 % TEMPLATE
 %-------------------------------------------------------------------------------
-\documentclass{../libs/sig-alternate}
-%\documentclass[sigconf,natbib=true]{acmart}
-%\settopmatter{printacmref=false} % Removes citation information below abstract
-%\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
-%\pagestyle{plain} % removes running headers
+\documentclass[balance=false,nonacm,sigconf]{acmart}
+
+\settopmatter{printacmref=false} % Removes citation information below abstract
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+
+\AtBeginDocument{%
+    \providecommand\BibTeX{{%
+        \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
 
 % support special characters
 \usepackage[T1]{fontenc}
@@ -14,12 +20,11 @@
 %-------------------------------------------------------------------------------
 % PACKAGES FOR URL
 %-------------------------------------------------------------------------------
-\usepackage{hyperref}
 \hypersetup{colorlinks, citecolor=blue, filecolor=blue, linkcolor=blue, urlcolor=blue}
 \usepackage{xurl}
 
 %-------------------------------------------------------------------------------
-% PACKAGES AND COMMANDS FOR TABLES 
+% PACKAGES AND COMMANDS FOR TABLES
 %-------------------------------------------------------------------------------
 \usepackage{longtable}
 \usepackage{multirow}
@@ -34,24 +39,17 @@
 % PACKAGES FOR FIGURES
 %-------------------------------------------------------------------------------
 \usepackage{graphicx,graphics,float,subfigure,wrapfig,epstopdf}
-\usepackage{dblfloatfix}%to fix the problem of [h!] [t!] [!b]
+\usepackage{dblfloatfix} %to fix the problem of [h!] [t!] [!b]
 \epstopdfsetup{update}
 
 %-------------------------------------------------------------------------------
-% PACKAGES FOR REFERENCE LIST FORMAT 
-%-------------------------------------------------------------------------------
-\usepackage[square,numbers]{natbib}%options: round; square; curly; angle; colon; comma; authoryear; numbers; super; sort; sort&compress; longnamesfirst; sectionbib; nonamebreak;
-
-\newcommand{\BibTeX}{\textrm{B \kern -.05em \textsc{i \kern -.025em b} \kern -.08emT \kern -.1667em \lower .7ex \hbox{E} \kern -.125emX}} % defining the \BibTeX command - from Oren Patashnik's original BibTeX documentation.
-
-%-------------------------------------------------------------------------------
-% PACKEGE FOR CREATING GANTT VISUALIZATION (PLANNING TABLE) 
+% PACKEGE FOR CREATING GANTT VISUALIZATION (PLANNING TABLE)
 %-------------------------------------------------------------------------------
 \usepackage{soul}
-\usepackage{../libs/gantt} %for the planning table
+\usepackage{pgfgantt} %for the planning table
 
 %-------------------------------------------------------------------------------
-% CREATING COMMANDS FOR AUTOREF 
+% CREATING COMMANDS FOR AUTOREF
 %-------------------------------------------------------------------------------
 \renewcommand{\chapterautorefname}{\S}
 \renewcommand{\sectionautorefname}{\S}
@@ -60,41 +58,44 @@
 \newcommand{\subfigureautorefname}{\figureautorefname}
 
 %-------------------------------------------------------------------------------
-% CREATING COMMANDS FOR MAKING COMMENTS
-%-------------------------------------------------------------------------------
-\newcommand\comment[1]{{\noindent\sffamily\textbf{[COMMENT: #1]}}}
-
-%-------------------------------------------------------------------------------
 % BEGIN DOCUMENT
 %-------------------------------------------------------------------------------
 \begin{document}
 
 %-------------------------------------------------------------------------------
-% TITLE AND AUTHORS
+% TITLE
 %-------------------------------------------------------------------------------
-    \title{Automating the Cybersecurity Triage Process: A Comparative Study on the Performance of Large Language Models}
+    \title[Automating the Cybersecurity Triage Process]{Automating the Cybersecurity Triage Process: A Comparative Study on the Performance of Large Language Models}
 
-    \numberofauthors{2}
-
-    \author{
-        \alignauthor
-        Pascal Bakker\\
-        \affaddr{University of Twente}\\
-        \email{p.n.bakker@student.utwente.nl}
-        %
-        \alignauthor
-        Jair Santanna\\
-        \affaddr{University of Twente \& Northwave}\\
-        \email{j.j.santanna@utwente.nl}\\
-        \email{jair.santanna@northwave.nl}
+%-------------------------------------------------------------------------------
+% AUTHORS
+%-------------------------------------------------------------------------------
+    \author{Pascal Bakker}
+    \affiliation{
+        \institution{University of Twente}
+        \country{}
     }
+    \email{p.n.bakker@student.utwente.nl}
+    \author{Jair Santanna}
+    \affiliation{
+        \institution{University of Twente \& Northwave}
+        \country{}
+    }
+    \email{j.j.santanna@utwente.nl}
+    \email{jair.santanna@northwave.nl}
 
+%-------------------------------------------------------------------------------
+% ABSTRACT
+%-------------------------------------------------------------------------------
+    \input{sections/00_abstract}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
     \maketitle
 
 %-------------------------------------------------------------------------------
 % SECTIONS
 %-------------------------------------------------------------------------------
-    \input{sections/00_abstract}
     \input{sections/01_introduction}
     \input{sections/02_related_work}
     \input{sections/03_methodologies}
@@ -103,11 +104,11 @@
 %-------------------------------------------------------------------------------
 % REFERENCES
 %-------------------------------------------------------------------------------
-    \newcommand{\newblock}{}
-    \bibliographystyle{unsrtnat} %abbrvnat OR unsrtnat OR plainnat
+    \bibliographystyle{ACM-Reference-Format}
     \bibliography{bibliography}
 
 %-------------------------------------------------------------------------------
 % END DOCUMENT
 %-------------------------------------------------------------------------------
 \end{document}
+\endinput

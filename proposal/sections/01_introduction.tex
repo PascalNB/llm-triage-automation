@@ -8,23 +8,25 @@
 
 The growing landscape of cyber threats has led to the introduction of Security Information and Even Management (SIEM)
 systems, which help organizations to detect and respond to security incidents.
-The systems monitor and analyze large amounts of data from various sources, and create alerts when certain conditions
-are met. \citep{ibmsiem}
-Security analysts have a task to filter out false positives and prioritize true events, but the volume and complexity
-of alerts makes this a slow and difficult task.
-The triage process involves understanding the impact of an alert, correlating it with other alerts and identifying
-potential future goals of adversaries to conclude the severity of the alert.
+The systems monitor and analyze large amounts of data from various sources, and create alarms when certain conditions
+are met.\ \citep{ibmsiem}
+Security analysts have a task to filter out false positives and prioritize true events.
+This process, triaging, involves understanding the impact of an alarm, correlating it with other alarms and identifying
+potential future goals of adversaries to conclude the severity of the alarm.
+In practice, only a small amount of alarms is thoroughly investigated since the volume and complexity of alarms make
+the task slow and difficult.\ \citep{chen2024elevating}
+
 Although Security Orchestration, Automation, and Response (SOAR) platforms have streamlined parts of the process by
 automating routine tasks, many steps still require human judgement to make adequate decisions.
-\citep{chuvakin2019triaging}
-
-% TODO: difference from literature
-
+\ \citep{chuvakin2019triaging}
 The recent development of Large Language Models (LLMs) can introduce new ways to optimize the triage process.
-By utilizing their ability to quickly process vast amounts of unstructured text, LLMs are well-suited to extract
-relevant information. \citep{chaudhary2024ai}
-Integrating the use of LLMs into key parts of the triage process can speed up alert classification and allow for timely
+By utilizing their ability to quickly process vast amounts of unstructured text using Natural Language Processing (NLP),
+LLMs are well-suited to extract relevant information.\ \citep{chaudhary2024ai}
+Integrating the use of LLMs into key parts of the triage process can speed up alarm classification and allow for timely
 responses.
+The MITRE ATT\&CK knowledge base consists of adversary tactics, techniques and examples based on real-world
+observations\ \citep{strom2018mitre} and can thus be used to identify where in the kill chain the alarm is located.
+This knowledge base can act as a basis for the use of LLMs to automate parts of the alarm response workflow.
 
 This research aims to explore the potential of LLMs in optimizing the triage process, as well as evaluate the
 performance of different models (e.g.\ ChatGPT, llama3, mistral) and establish a comparison of these models.

@@ -3,7 +3,8 @@
 
 This section discusses the proposed planning of the study which will act as a guideline throughout the research process.
 Besides this proposal, the planning separates the study into the categories `research`, `paper` and `presentation`,
-as is shown in the Gantt chart in Figure\ \ref{fig:figure2}.
+as is shown in the Gantt chart in Figure\ \ref{fig:gantt-chart}.
+
 Of the three research questions, most time is allocated to research question one, because it involves a literature
 review, full understanding of the triage process and an implementation of the automation.
 Submission deadlines are shown as diamonds with white indicating draft submissions and black indicating final
@@ -19,16 +20,20 @@ These deadlines consist of the following:
     \item July 5th: Conference presentation
 \end{itemize}
 
-\definecolor{proposal}{RGB}{252,106,148}
-\definecolor{research}{RGB}{85,159,237}
-\definecolor{writing}{RGB}{237,189,85}
-\definecolor{presentation}{RGB}{74,217,121}
-\definecolor{draft}{RGB}{255,255,255}
-\definecolor{final}{RGB}{0,0,0}
+%-------------------------------------------------------------------------------
+% GANTT CHART
+%-------------------------------------------------------------------------------
 
-\setganttlinklabel{f-s}{}
+\definecolor{proposal}{RGB}{252,106,148} % dark pink
+\definecolor{research}{RGB}{85,159,237} % blue
+\definecolor{writing}{RGB}{237,189,85} % orange-yellow
+\definecolor{presentation}{RGB}{74,217,121} % green
+\definecolor{draft}{RGB}{255,255,255} % white
+\definecolor{final}{RGB}{0,0,0} % black
 
-% ensure vgrid starts at start of week
+\setganttlinklabel{f-s}{} % disable "finish-to-start" label
+
+% ensure vgrid starts at first day of week
 \DTMcomputedayofweekindex{2024-05-01}{\startdow}
 \newcount\off\off\startdow\multiply\off -1\advance\off 6
 \ifnum\off=0
@@ -41,7 +46,7 @@ These deadlines consist of the following:
     \fi
 \fi
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \begin{center}
         \scalebox{0.85}{
             \begin{ganttchart}
@@ -91,9 +96,5 @@ These deadlines consist of the following:
         }
     \end{center}
     \caption{Gantt chart of proposed planning}
-    \label{fig:figure2}
+    \label{fig:gantt-chart}
 \end{figure}
-
-% The research topics part consists solely of a literature study that focuses on ... All relevant information learned from this will be integrated in a survey that will form the first part of the thesis.
-
-% Following the research topics are each of the research questions, with time allotted at the end of each research question to integrate the results into the thesis. 

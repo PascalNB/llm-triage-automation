@@ -13,8 +13,9 @@ are met.\ \citep{ibmsiem}
 Security analysts have a task to filter out false positives and prioritize true events.
 This process, triaging, involves understanding the impact of an alarm, correlating it with other alarms and identifying
 potential future goals of adversaries to conclude the severity of the alarm.
-In practice, only a small amount of alarms is thoroughly investigated since the volume and complexity of alarms make
+In practice, only a small portion of alarms are thoroughly investigated since the volume and complexity of alarms make
 the task slow and difficult.\ \citep{chen2024elevating}
+Besides this, the trivial approaches are prone to human error, which presses the need for automation.
 
 Although Security Orchestration, Automation, and Response (SOAR) platforms have streamlined parts of the process by
 automating routine tasks, many steps still require human judgment to make adequate decisions.
@@ -29,7 +30,7 @@ observations\ \citep{strom2018mitre} and can thus be used to identify where in t
 This knowledge base can act as a basis for the use of LLMs to automate parts of the alarm response workflow.
 
 This research aims to explore the potential of LLMs in optimizing the triage process, as well as evaluate the
-performance of different models (e.g.\ GPT-4\ \citep{achiam2023gpt}, llama3, mistral) and establish a comparison of
+performance of different models (e.g.,\ GPT-4\ \citep{achiam2023gpt}, llama3, mistral) and establish a comparison of
 these models.
 To pursue our goal, we define the following research questions (RQ) as the basis of our research:
 
@@ -44,5 +45,6 @@ Firstly, section\ \ref{sec:related-work} will discuss literature about solutions
 this study.
 Secondly, section\ \ref{sec:methodologies} proposed the methodologies that will be used to answer each research
 question.
+Besides that, section\ \ref{sec:expected-results} describes what the expected results and outcomes are.
 After that, section\ \ref{sec:planning} presents a preliminary planning that will act as a guide throughout the study.
 Lastly, section\ \ref{sec:use-of-ai} states how generative AI tools will be used during the study.

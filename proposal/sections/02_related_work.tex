@@ -36,20 +36,22 @@ traces and presents these to novice analysts which in turn trains them in effect
 \subsection{Natural Language Processing}
 \label{subsec:natural-language-processing}
 
-\citet{singh2022cyber} have used NLP to detect software vulnerabilities by using source code represented as texts,
+There are many cases where NLP has been used to tackle cybersecurity-related problems, such as a solution
+by\ \citet{singh2022cyber} that uses NLP to detect software vulnerabilities by using source code represented as texts,
 showing the use of NLP in cybersecurity.
 
-Since most general LLMs are not domain-specific and were not trained to use cybersecurity-related technical terms,
-\citet{bayer2024cysecbert} have created a dataset and language model specifically tailored to the cybersecurity domain.
-The model, CySecBERT, is based on BERT, a language representation model that allows fine-tuning for a wide range of
-tasks.\ \citep{devlin2018bert}
+However, most general LLMs are not domain-specific and were not trained to use cybersecurity-related technical terms,
+therefore,\ \citet{bayer2024cysecbert} have created a dataset and language model specifically tailored to the
+cybersecurity domain.
+The model, CySecBERT, is based on BERT\ \citep{devlin2018bert}, a language representation model that allows fine-tuning
+for a wide range of tasks.
 CySecBERT is designed to prevent catastrophic forgetting, a phenomenon that occurs when existing models are trained on
-new data and as such forget original knowledge.
-The result outperforms both BERT and CyBERT\ \citep{ranade2021cybert} (another model fine-tuned on cyber thread intelligence data)
-in cybersecurity-related tasks.
+new data and as such, forget original knowledge.
+When used to perform cybersecurity-related tasks, CySecBERT outperforms both BERT and CyBERT\ \citep{ranade2021cybert}
+(another model fine-tuned on cyber thread intelligence data).
 By using domain-adaptive pre-training (DAPT)\ \citep{gururangan2020don}, more specific models within the cybersecurity
-domain have been created: e.g.\ MalBERT\ \citep{rahali2021malbert} to detect malicious software, and CatBERT\ \citep{lee2020catbert}
-to detect phishing emails by identifying social engineering techniques.
+domain have been created: e.g.,\ MalBERT\ \citep{rahali2021malbert} to detect malicious software, and
+CatBERT\ \citep{lee2020catbert}to detect phishing emails by identifying social engineering techniques.
 
 These examples show how LLMs can play a big role in automating cybersecurity-related tasks, however, they do not show
 application in the triage process.

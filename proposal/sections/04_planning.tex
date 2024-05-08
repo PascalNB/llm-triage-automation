@@ -1,52 +1,96 @@
 \section{Planning}
 \label{sec:planning}
 
-In this section we will shortly discuss the planning of the study.
-The study has been split into six parts, as can be seen in the table below.
-Note that a planning such as this when is to be seen as a guideline.
-There are however some hard deadlines for handing in drafts and final versions.
-Here we have an overview of the deadlines:
+This section discusses the proposed planning of the study which will act as a guideline throughout the research process.
+Besides this proposal, the planning separates the study into the categories `research`, `paper` and `presentation`,
+as is shown in the Gantt chart in Figure\ \ref{fig:figure2}.
+Of the three research questions, most time is allocated to research question one, because it involves a literature
+review, full understanding of the triage process and an implementation of the automation.
+Submission deadlines are shown as diamonds with white indicating draft submissions and black indicating final
+submissions.
+These deadlines consist of the following:
 
 \begin{itemize}
+    \item May 9th: Research proposal draft
     \item May 13th: Research proposal acceptance
-    \item June 13th: Draft paper submission
+    \item June 23rd: Draft paper submission
     \item June 30th: Final paper submission
+    \item July 4th: Camera ready paper submission
     \item July 5th: Conference presentation
 \end{itemize}
 
-The planning is made in order to adhere to these submission deadlines.
+\definecolor{proposal}{RGB}{252,106,148}
+\definecolor{research}{RGB}{85,159,237}
+\definecolor{writing}{RGB}{237,189,85}
+\definecolor{presentation}{RGB}{74,217,121}
+\definecolor{draft}{RGB}{255,255,255}
+\definecolor{final}{RGB}{0,0,0}
+
+\setganttlinklabel{f-s}{}
+
+% ensure vgrid starts at start of week
+\DTMcomputedayofweekindex{2024-05-01}{\startdow}
+\newcount\off\off\startdow\multiply\off -1\advance\off 6
+\ifnum\off=0
+    \ganttset{vgrid={dotted, *{\the\off}{draw=none}}}
+\else
+    \if\startdow=0
+        \ganttset{vgrid={*{\startdow}{draw=none}, dotted}}
+    \else
+        \ganttset{vgrid={*{\the\off}{draw=none}, dotted, *{\startdow}{draw=none}}}
+    \fi
+\fi
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{1}{
-            \begin{ganttchart}[
-                y unit title=0.7cm,
-                y unit chart=0.5cm,
-                x unit=0.5cm,
-                vgrid,hgrid,
+        \scalebox{0.85}{
+            \begin{ganttchart}
+                [
+                time slot format=isodate,
+                time slot unit=day,
+                calendar week text={\currentweek},
+                y unit title=0.4cm,
+                y unit chart=0.6cm,
+                x unit=0.1cm,
                 title label anchor/.style={below=-1.6ex},
                 title height=1,
                 progress label text={},
-                bar height=0.7,
                 group right shift=0,
-                group top shift=.6,
-                group height=.3]{1}{10}
-
+                group top shift=.4,
+                group height=0.2,
+                group/.append style={fill=gray},
+                bar height=0.5,
+                bar top shift=0.25,
+                link/.style={->},
+                milestone left shift=-0.25,
+                milestone right shift=1.25,
+                link type=f-s
+                ]{2024-05-01}{2024-07-5}
                 %labels
-                \gantttitle{Month}{10} \\
-                \gantttitle{May}{5}
-                \gantttitle{June}{4}
-                \gantttitle{July}{1} \\
-                \gantttitle{Week}{10} \\
-                \gantttitlelist{1,...,10}{1} \\
-                %tasks
-                \ganttgroup{Writing}{1}{10} \\
-                \ganttbar{Research Proposal}{1}{2} \\
-                \ganttbar{Research Proposal}{1}{2} \\
+                \gantttitlecalendar{year, month=name, week} \\
+                %
+                \ganttbar[bar/.append style={fill=proposal}]{Research Proposal}{2024-05-01}{2024-05-9}\\
+                \ganttmilestone[milestone/.append style={fill=draft}]{Submissions}{2024-05-09}
+                \ganttmilestone[milestone/.append style={fill=final}]{}{2024-05-13} \\\\
+                %
+                \ganttgroup{Research}{2024-05-14}{2024-06-24}\\
+                \ganttbar[bar/.append style={fill=research}]{RQ1}{2024-05-14}{2024-06-07}\\
+                \ganttlinkedbar[bar/.append style={fill=research}]{RQ2}{2024-06-10}{2024-06-17}\\
+                \ganttlinkedbar[bar/.append style={fill=research}]{RQ3}{2024-06-20}{2024-06-24}\\\\
+                %
+                \ganttgroup{Paper}{2024-05-14}{2024-06-30}\\
+                \ganttbar[bar/.append style={fill=writing}]{Writing}{2024-05-14}{2024-06-30}\\
+                \ganttmilestone[milestone/.append style={fill=draft}]{Submissions}{2024-06-23}
+                \ganttmilestone[milestone/.append style={fill=final}]{}{2024-06-30}
+                \ganttmilestone[milestone/.append style={fill=final}]{}{2024-07-04}\\\\
+                %
+                \ganttgroup{Presentation}{2024-06-22}{2024-07-05} \\
+                \ganttbar[bar/.append style={fill=presentation}]{Preparation}{2024-06-22}{2024-07-05} \\
+                \ganttmilestone[milestone/.append style={fill=final}]{Conference}{2024-07-05}
             \end{ganttchart}
         }
     \end{center}
-    \caption{Gantt Chart}
+    \caption{Gantt chart of proposed planning}
     \label{fig:figure2}
 \end{figure}
 

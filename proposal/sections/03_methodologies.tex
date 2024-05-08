@@ -1,25 +1,74 @@
 \section{Methodologies}
 \label{sec:methodologies}
 
-Brief summary explaining the content and the connection.
-you could even to make a picture explaining how the parts connect for example a conceptual figure with your idea (if possible).
-On this, I must say that Figures MUST be in pdf format (I like to use Inkscape to create my figures, then I export to pdf) [ask me how, for help].
+The following sections provide descriptions about the methodologies that will be used to answer the research questions.
+It will act as a roadmap that will be followed throughout the research to ensure its transparency and reproducibility.
+
+%-------------------------------------------------------------------------------
+% RQ1
+%-------------------------------------------------------------------------------
 
 \subsection{On answering RQ1}
 \label{subsec:on-answering-rq1}
-Answering RQ1
+
+The goal of the first research question is to find in which parts of the triage process LLMs can be applied, and how
+they can be applied.
+To answer this, the following steps will be made:
+
+\begin{enumerate}
+    \item A literature review will be conducted to identify existing and proposed ways in which the triage process can
+    be (partially) automated.
+    \item Examples of triaging by professional security analysts will be used to discover the process steps where LLMs
+    can be applied.
+    \item An implementation will be made in Python using a Jupyter notebook to automatically run tasks on different
+    LLMs.
+    The data used in these tasks will be provided by Northwave Cyber Security.
+\end{enumerate}
+
+Besides GPT-4, the exact choice of LLMs is still up for discussion.
+The other models will be used through the Ollama\ \citep{ollama} API because of its simplicity to deploy and use openly
+available models.
+
+%-------------------------------------------------------------------------------
+% RQ2
+%-------------------------------------------------------------------------------
 
 \subsection{On answering RQ2}
 \label{subsec:on-answering-rq2}
-Answering RQ2
+
+The goal of the second research question is to discover suitable evaluation metrics to assess the performance of the
+different LLMs.
+This will be done through the following steps:
+
+\begin{enumerate}
+    \item Quantitative measures will be identified to reflect the performance of models (e.g.\ accuracy, precision,
+    F-1 score).
+    \item Consistent prompts are engineered to eliminate bias across different LLMs.
+    These prompts are unique per type of alarm, but future scalability and other alarm types should be considered.
+    \item An analysis framework is established to systematically test models.
+    This will also be implemented in a Jupyter notebook for better replicability.
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+% RQ3
+%-------------------------------------------------------------------------------
 
 \subsection{On answering RQ3}
 \label{subsec:on-answering-rq3}
-Answering RQ3
+After answering RQ2, the quantitative analysis framework can be used to compare the performance of different LLMs.
+Answering the third research question will be done as follows:
 
-\begin{figure}[h!]
-	\label{fig:figure}
-	\centering
-	\includegraphics[width=0.45\textwidth]{figs/example}
-	\caption{Example of Figure.}
-\end{figure}
+\begin{enumerate}
+    \item Triage examples as test cases are collected.
+    For the scope of this project, this will consist of 3 types of alarms.
+    \item Each model is tested on all cases and comparisons will be made based on the scoring.
+    \item Using the scores, conclusions will be drawn about the strengths and weaknesses of each model.
+\end{enumerate}
+
+%
+%\begin{figure}[h!]
+%	\label{fig:figure}
+%	\centering
+%	\includegraphics[width=0.45\textwidth]{figs/example}
+%	\caption{Example of Figure.}
+%\end{figure}

@@ -31,9 +31,12 @@
 \usepackage{adjustbox}
 \usepackage{color,colortbl,xcolor}
 \usepackage{array}
-\newcolumntype{L}[1]{>{\raggedright\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+%\newcolumntype{L}[1]{>{\raggedright\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{C}[1]{>{\centering\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{R}[1]{>{\raggedleft\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+
 
 %-------------------------------------------------------------------------------
 % PACKAGES FOR FIGURES
@@ -45,8 +48,8 @@
 %-------------------------------------------------------------------------------
 % PACKEGE FOR CREATING GANTT VISUALIZATION (PLANNING TABLE)
 %-------------------------------------------------------------------------------
-\usepackage{soul}
-\usepackage{pgfgantt} %for the planning table
+\usepackage{pgfgantt}
+\usepackage{datetime2,datetime2-calc}
 
 %-------------------------------------------------------------------------------
 % CREATING COMMANDS FOR AUTOREF
@@ -112,6 +115,7 @@
     \input{sections/02_related_work}
     \input{sections/03_methodologies}
     \input{sections/04_planning}
+    \input{sections/05_use_of_ai}
 
 %-------------------------------------------------------------------------------
 % REFERENCES

@@ -1,0 +1,130 @@
+%! Author = Pascal Bakker
+%! Date = 04/05/2024
+
+%-------------------------------------------------------------------------------
+% TEMPLATE
+%-------------------------------------------------------------------------------
+\documentclass[balance=false,nonacm,sigconf]{acmart}
+
+\settopmatter{printacmref=false} % Removes citation information below abstract
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+
+\AtBeginDocument{%
+    \providecommand\BibTeX{{%
+        \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+% support special characters
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%-------------------------------------------------------------------------------
+% PACKAGES FOR URL
+%-------------------------------------------------------------------------------
+\hypersetup{colorlinks, citecolor=blue, filecolor=blue, linkcolor=blue, urlcolor=blue}
+\usepackage{xurl}
+
+%-------------------------------------------------------------------------------
+% PACKAGES AND COMMANDS FOR TABLES
+%-------------------------------------------------------------------------------
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{color,colortbl,xcolor}
+\usepackage{array}
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+%\newcolumntype{L}[1]{>{\raggedright\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{C}[1]{>{\centering\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{R}[1]{>{\raggedleft\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
+
+
+%-------------------------------------------------------------------------------
+% PACKAGES FOR FIGURES
+%-------------------------------------------------------------------------------
+\usepackage{graphicx,graphics,float,subfigure,wrapfig,epstopdf}
+\usepackage{dblfloatfix} %to fix the problem of [h!] [t!] [!b]
+\epstopdfsetup{update}
+
+%-------------------------------------------------------------------------------
+% PACKEGE FOR CREATING GANTT VISUALIZATION (PLANNING TABLE)
+%-------------------------------------------------------------------------------
+\usepackage{pgfgantt}
+\usepackage{datetime2,datetime2-calc}
+
+%-------------------------------------------------------------------------------
+% CREATING COMMANDS FOR AUTOREF
+%-------------------------------------------------------------------------------
+\renewcommand{\chapterautorefname}{\S}
+\renewcommand{\sectionautorefname}{\S}
+\renewcommand{\subsectionautorefname}{\S}
+\renewcommand{\subsubsectionautorefname}{\S}
+\newcommand{\subfigureautorefname}{\figureautorefname}
+
+%-------------------------------------------------------------------------------
+% COPYRIGHT
+%-------------------------------------------------------------------------------
+\setcopyright{acmcopyright}
+\copyrightyear{2024}
+\acmYear{2024}
+
+%-------------------------------------------------------------------------------
+% BEGIN DOCUMENT
+%-------------------------------------------------------------------------------
+\begin{document}
+
+%-------------------------------------------------------------------------------
+% TITLE
+%-------------------------------------------------------------------------------
+    \title[Automating the Cybersecurity Triage Process]{Automating the Cybersecurity Triage Process: A Comparative Study on the Performance of Large Language Models}
+
+%-------------------------------------------------------------------------------
+% AUTHORS
+%-------------------------------------------------------------------------------
+    \author{Pascal Bakker}
+    \email{p.n.bakker@student.utwente.nl}
+    \affiliation{%
+        \institution{University of Twente}
+        \streetaddress{P.O. Box 217}
+        \city{Enschede}
+        \country{The Netherlands}
+        \postcode{7500AE}
+    }
+
+%-------------------------------------------------------------------------------
+% ABSTRACT AND KEYWORDS
+%-------------------------------------------------------------------------------
+    \input{sections/00_abstract}
+    \keywords{%
+        Cybersecurity,
+        triage,
+        analysis,
+        large language model,
+        natural language processing,
+        automation
+    }
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+    \maketitle
+
+%-------------------------------------------------------------------------------
+% SECTIONS
+%-------------------------------------------------------------------------------
+    \input{sections/01_introduction}
+    \input{sections/02_related_work}
+    \input{sections/03_methodologies}
+    \input{sections/04_expected_results}
+    \input{sections/05_planning}
+    \input{sections/06_use_of_ai}
+
+%-------------------------------------------------------------------------------
+% REFERENCES
+%-------------------------------------------------------------------------------
+    \bibliographystyle{ACM-Reference-Format}
+    \bibliography{bibliography}
+
+%-------------------------------------------------------------------------------
+% END DOCUMENT
+%-------------------------------------------------------------------------------
+\end{document}
+\endinput

@@ -1,0 +1,57 @@
+\section{Related Work}
+\label{sec:related-work}
+
+%-------------------------------------------------------------------------------
+% Optimizing Triage
+%-------------------------------------------------------------------------------
+
+\subsection{Optimizing Triage}
+\label{subsec:optimizing-triage}
+
+Existing and proposed solutions to improve the feasibility of triage range from trivial implementations to advanced
+algorithms.
+Solutions like reducing the overall volume of alarms can be achieved by fusion of alarms and increasing holism to
+establish patterns of threats in networks.
+Additionally, proposed graph-based solutions attempt to track the threat paths on computers, however, they only work
+in specific cases and do not consider large numbers of concurrent alarm paths.\ \citep{ficke2022reconstructing}
+
+A proposed algorithm by \citet{taheri2020cyberattack} incorporates incremental clustering to categorize cyberattacks
+and find outliers to purge false alarms.
+Testing the performance on data sets of intrusion detection systems resulted in outlier detection with high accuracy.
+
+\citet{zhong2018learning} approached the automation of triage by tracing the operations of professional security
+analysts.
+Finite state machines were constructed based on the analysts' patterns and were used to achieve high-speed triage with
+a low amount of false positives.
+However, limitations include a high number of false negatives as well as a dependency on high-performing security
+analysts to improve the performance of the automated system.
+
+\citet{lin2018data} extends this approach by feeding contexts into a recurrent neural network which detects matching
+traces and presents these to novice analysts which in turn trains them in effective triage.
+
+%-------------------------------------------------------------------------------
+% Natural Language Processing
+%-------------------------------------------------------------------------------
+
+\subsection{Natural Language Processing}
+\label{subsec:natural-language-processing}
+
+There are many cases where NLP has been used to tackle cybersecurity-related problems, such as a solution
+by\ \citet{singh2022cyber} that uses NLP to detect software vulnerabilities by using source code represented as texts,
+showing the use of NLP in cybersecurity.
+
+However, most general LLMs are not domain-specific and were not trained to use cybersecurity-related technical terms,
+therefore,\ \citet{bayer2024cysecbert} have created a dataset and language model specifically tailored to the
+cybersecurity domain.
+The model, CySecBERT, is based on BERT\ \citep{devlin2018bert}, a language representation model that allows fine-tuning
+for a wide range of tasks.
+CySecBERT is designed to prevent catastrophic forgetting, a phenomenon that occurs when existing models are trained on
+new data and as such, forget original knowledge.
+When used to perform cybersecurity-related tasks, CySecBERT outperforms both BERT and CyBERT\ \citep{ranade2021cybert}
+(another model fine-tuned on cyber thread intelligence data).
+By using domain-adaptive pre-training (DAPT)\ \citep{gururangan2020don}, more specific models within the cybersecurity
+domain have been created: e.g.,\ MalBERT\ \citep{rahali2021malbert} to detect malicious software, and
+CatBERT\ \citep{lee2020catbert}to detect phishing emails by identifying social engineering techniques.
+
+These examples show how LLMs can play a big role in automating cybersecurity-related tasks, however, they do not show
+application in the triage process.

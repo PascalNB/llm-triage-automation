@@ -6,33 +6,76 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Introduction and background.
-SOC\@.
-What is Triage.
+(TODO: numbers on security incidents) % TODO
 
-\subsection{Problem}
-\label{subsec:intro-problem}
+The 2023 Cost of a Data Breach Report by\ \citet{ibm2023cost} concludes that the average cost of a security breach in
+2023 was 4.45M USD, marking an increase of 2.3\% since 2022 and a 15.3\% increase compared to 2020.
+Considering that only 1 in 3 breaches are identified by an organization's security team, and that organizations with
+high levels of incident response planning saved 1.49M USD on average, it shows the pressing need for security
+investments in training, thread detection and response technologies.
+As a result, 51\% of organizations that fell victim to breaches plan to increase such security investments.
 
-Problem with triage.
+Organizations use Security Operation Centers (SOC) to respond to security incidents in real-time.
+SOCs consist of security analysts that investigate data from various sources such as Security Information and Event
+Management (SIEM) systems.
+The SIEM systems collect log data from a large number of sources such as network devices and applications within the
+organization's system.
+Based on rules, patterns and conditions, anomalies and suspicious activities are identified and alarms are created.
 
-\begin{enumerate}
-    \item say that security attacks are happening very often (get numbers).
-    \item say that the alarms are handled by security operation centers (SOC).
-    \item the tool that centralizes alarms is the SIEM\@.
-\end{enumerate}
+The number of alarms is large, ranging from hundreds to thousands per day.
+This causes security teams to experience fatigue, and it contributes to internal friction and turnover.
+Besides that, a large portion of the alarms are false positives or low priority\ \citep{orca2022fatigue}.
 
-\subsection{AI, ML, NLP and LLM}
+Since the SOCs cannot respond to every single alarm, identifying the severity of alarms is an important step in the
+incident response workflow.
+This process, triage, involves understanding the impact of an alarm, correlating it with other alarms and identifying
+potential future goals of adversaries to conclude its severity.
+By prioritizing alarms, SOCs can focus their resources on high-severity alarms first, thus mitigating damages and
+reducing costs.
+
+Although Security Orchestration, Automation, and Response (SOAR) platforms have streamlined parts of the process by
+automating routine tasks, many steps still require human judgment to make adequate
+decisions\ \citep{chuvakin2019triaging}.
+Consequentially, the triage process is prone to human error.
+This, in combination with the volume and complexity of alarms, presses the need for the automation of triage.
+
+\subsection{Large Language Models}
 \label{subsec:intro-definitions}
 
-History and definitions.
+Artificial Intelligence (AI) can potentially play a big role when automating triage.
+This field of study involves the use of machines to perform tasks that require human intelligence such as reasoning,
+problem-solving and learning\ \citep{oed:ai}.
+Machine Learning (ML) is a type of AI that allows systems to solve problems by analyzing patterns in data and making
+predictions and decisions without explicit programming\ \citep{oed:ml}.
+One purpose of ML is Natural Language Processing (NLP).
+NLP involves using computational approaches to process natural-language texts with goals such as translation,
+summarization, sentiment assessment or generation of texts.
+It plays a growing role in streamlining and automating business operations, and increasing
+productivity\ \citep{ibm:siem}.
 
-\subsection{Research Questions}
-\label{subsec:intro-research-questions}
+A part of NLP is Natural Language Understanding (NLU) which aims to comprehend meaning and intent in natural language.
+Opposite of this, Natural Language Generation (NLG) focuses on generating original human-like texts.
+To achieve NLU and NLG, language models make use of so-called encoders and decoders.
+The purpose of encoders is to turn input texts into fixed-size abstract representations.
+Language models then use decoders to turn such representations into a generated target
+output\ \cite{sutskever2014sequence}.
 
-%TODO citations
+In 2014,\ \citep{bahdanau2014neural} introduced the concept of attention, allowing language models to focus on the most
+relevant parts of texts, making decoding more efficient.
+Based on this,\ \citet{vaswani2017attention} developed the transformer architecture in 2017, setting the precedent for
+Large Language Models (LLM).
+
+
+
+NLP -> NLU -> LLM\@.
+
+\subsection{Research Structure}
+\label{subsec:intro-research-structure}
+
+% TODO citations
 
 This research aims to explore the potential of LLMs in optimizing the triage process, as well as evaluate the
-performance of different models (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3, Mistral) and establish a comparison of
+performance of different LLMs (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3, Mistral) and establish a comparison of
 these models.
 To pursue our goal, we define the following research questions (RQ) as the basis of our research:
 
@@ -41,3 +84,5 @@ To pursue our goal, we define the following research questions (RQ) as the basis
     \item \textbf{RQ2:} What suitable evaluation metrics should be used to assess the performance of LLMs in cybersecurity triage?
     \item \textbf{RQ3:} How do different LLMs compare in performance when optimizing the cybersecurity triage process?
 \end{itemize}
+
+(TODO: Structure) % TODO

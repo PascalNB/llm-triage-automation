@@ -56,18 +56,23 @@ productivity\ \citep{ibm:siem}.
 A part of NLP is Natural Language Understanding (NLU) which aims to comprehend meaning and intent in natural language.
 Opposite of this, Natural Language Generation (NLG) focuses on generating original human-like texts.
 To achieve NLU and NLG, language models make use of so-called encoders and decoders.
-The purpose of encoders is to turn input texts into fixed-size abstract representations.
-Language models then use decoders to turn such representations into a generated target
-output\ \cite{sutskever2014sequence}.
+The purpose of encoders is to turn input texts into fixed-size vectors that act as abstract representations.
+Language models then use decoders to turn such representations into a generated target output.
+This approach works well on tasks that map input sequences to output sequences (sec2sec), such as language
+translation\ \citep{sutskever2014sequence, cho2014learning}.
 
-In 2014,\ \citep{bahdanau2014neural} introduced the concept of attention, allowing language models to focus on the most
-relevant parts of texts, making decoding more efficient.
+In 2014,\ \citet{bahdanau2014neural} introduced the concept of attention which rids the encoders of creating
+fixed-length vectors, allowing language models to focus on the most relevant parts of texts, enabling operations on much
+longer input sequences.
 Based on this,\ \citet{vaswani2017attention} developed the transformer architecture in 2017, setting the precedent for
-Large Language Models (LLM).
+modern LLMs.
+Transformers are superior in quality, more parallelizable, thus faster, and take less time to train.
 
+- BERT
 
+- Adaptive pre-training
 
-NLP -> NLU -> LLM\@.
+- Decoder-only models
 
 \subsection{Research Structure}
 \label{subsec:intro-research-structure}
@@ -75,8 +80,8 @@ NLP -> NLU -> LLM\@.
 % TODO citations
 
 This research aims to explore the potential of LLMs in optimizing the triage process, as well as evaluate the
-performance of different LLMs (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3, Mistral) and establish a comparison of
-these models.
+performance of different LLMs (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3\ \[?\], Mistral\ \[?\]) and establish a
+comparison of these models.
 To pursue our goal, we define the following research questions (RQ) as the basis of our research:
 
 \begin{itemize}

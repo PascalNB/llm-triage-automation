@@ -13,7 +13,9 @@ The 2023 Cost of a Data Breach Report by\ \citet{ibm2023cost} concludes that the
 Considering that only 1 in 3 breaches are identified by an organization's security team, and that organizations with
 high levels of incident response planning saved 1.49M USD on average, it shows the pressing need for security
 investments in training, thread detection and response technologies.
-As a result, 51\% of organizations that fell victim to breaches plan to increase such security investments.
+
+\subsection{Triage}
+\label{subsec:intro-triage}
 
 Organizations use Security Operation Centers (SOC) to respond to security incidents in real-time.
 SOCs consist of security analysts that investigate data from various sources such as Security Information and Event
@@ -62,17 +64,26 @@ This approach works well on tasks that map input sequences to output sequences (
 translation\ \citep{sutskever2014sequence, cho2014learning}.
 
 In 2014,\ \citet{bahdanau2014neural} introduced the concept of attention which rids the encoders of creating
-fixed-length vectors, allowing language models to focus on the most relevant parts of texts, enabling operations on much
-longer input sequences.
+fixed-length vectors, allowing language models to focus on the most relevant parts of texts and enabling operations on
+much longer input sequences.
 Based on this,\ \citet{vaswani2017attention} developed the transformer architecture in 2017, setting the precedent for
 modern LLMs.
 Transformers are superior in quality, more parallelizable, thus faster, and take less time to train.
 
-- BERT
+Early well-known examples of such transformer-based models are BERT
+(Bidirectional Encoder Representations from Transformers)\ \citep{devlin2018bert}, and
+GPT (Generative Pre-trained Transformer)\ \citep{radford2018improving}.
+\begin{itemize}
+    \item BERT was specifically designed as a pre-trained model to be easily fine-tuned for a wide range of tasks such
+    as answering questions and natural language inference, without the need of task-specific architecture.
+    In the cybersecurity domain, BERT models have been fine-tuned to detect malicious software\ \citep{rahali2021malbert}
+    and phishing emails\ \citep{lee2020catbert}.
+    \item GPT is pre-trained on a large amount of unlabeled data and designed to generate coherent context-specific
+    text.
+    Like BERT, it requires fine-tuning to adapt the model to specific tasks.
+\end{itemize}
 
-- Adaptive pre-training
-
-- Decoder-only models
+(TODO: disadvantages fine-tuned models vs general models) % TODO
 
 \subsection{Research Structure}
 \label{subsec:intro-research-structure}
@@ -80,8 +91,8 @@ Transformers are superior in quality, more parallelizable, thus faster, and take
 % TODO citations
 
 This research aims to explore the potential of LLMs in optimizing the triage process, as well as evaluate the
-performance of different LLMs (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3\ \[?\], Mistral\ \[?\]) and establish a
-comparison of these models.
+performance of different LLMs (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3\ [?],
+Mistral\ \citep{jiang2023mistral}) and establish a comparison of these models.
 To pursue our goal, we define the following research questions (RQ) as the basis of our research:
 
 \begin{itemize}

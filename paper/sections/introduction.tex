@@ -14,19 +14,20 @@ Considering that only 1 in 3 breaches are identified by an organization's securi
 high levels of incident response planning saved 1.49M USD on average, it shows the pressing need for security
 investments in training, thread detection and response technologies.
 
-\subsection{Triage}
-\label{subsec:intro-triage}
-
-Organizations use Security Operation Centers (SOC) to respond to security incidents in real-time.
+One such investment is the use of Security Operation Centers (SOCs).
+Organizations use SOCs to respond to security incidents in real-time.
 SOCs consist of security analysts that investigate data from various sources such as Security Information and Event
 Management (SIEM) systems.
 The SIEM systems collect log data from a large number of sources such as network devices and applications within the
 organization's system.
 Based on rules, patterns and conditions, anomalies and suspicious activities are identified and alarms are created.
 
-The number of alarms is large, ranging from hundreds to thousands per day.
-This causes security teams to experience fatigue, and it contributes to internal friction and turnover.
-Besides that, a large portion of the alarms are false positives or low priority\ \citep{orca2022fatigue}.
+The number of alarms is large, ranging from hundreds to thousands per day, of which a large portion are false positives
+or low priority.
+The volume and complexity of the alarms causes SOCs to miss serious attacks and inadvertently contributes to mistakes in
+the analysis.
+Besides that, it leads to security teams experiencing fatigue, and it contributes to internal friction and
+turnover\ \citep{orca2022fatigue}.
 
 Since the SOCs cannot respond to every single alarm, identifying the severity of alarms is an important step in the
 incident response workflow.
@@ -35,69 +36,43 @@ potential future goals of adversaries to conclude its severity.
 By prioritizing alarms, SOCs can focus their resources on high-severity alarms first, thus mitigating damages and
 reducing costs.
 
-Although Security Orchestration, Automation, and Response (SOAR) platforms have streamlined parts of the process by
-automating routine tasks, many steps still require human judgment to make adequate
+There are many proposed and implemented techniques to optimize triage and the SOC workflow.
+For example, Security Orchestration, Automation, and Response (SOAR) platforms have streamlined parts of the process by
+automating routine tasks, but many steps of triage still require human judgment to make adequate
 decisions\ \citep{chuvakin2019triaging}.
 Consequentially, the triage process is prone to human error.
 This, in combination with the volume and complexity of alarms, presses the need for the automation of triage.
+(TODO: Other examples) % TODO
 
-\subsection{Large Language Models}
-\label{subsec:intro-definitions}
-
-Artificial Intelligence (AI) can potentially play a big role when automating triage.
-This field of study involves the use of machines to perform tasks that require human intelligence such as reasoning,
-problem-solving and learning\ \citep{oed:ai}.
-Machine Learning (ML) is a type of AI that allows systems to solve problems by analyzing patterns in data and making
+The field of Artificial Intelligence (AI) can potentially play a big role when automating triage.
+It involves the use of machines to perform tasks that mimic human actions such as reasoning, problem-solving and
+learning\ \citep{oed:ai}.
+Machine Learning (ML) allows systems to solve problems by analyzing patterns in data and making
 predictions and decisions without explicit programming\ \citep{oed:ml}.
-One purpose of ML is Natural Language Processing (NLP).
-NLP involves using computational approaches to process natural-language texts with goals such as translation,
-summarization, sentiment assessment or generation of texts.
+One subfield of ML is Natural Language Processing (NLP).
+NLP involves using computational approaches to process and transcribe natural-language texts with further goals such as
+translation, summarization, sentiment assessment or generation of texts.
 It plays a growing role in streamlining and automating business operations, and increasing
-productivity\ \citep{ibm:siem}.
+productivity\ \citep{ibm:nlp}.
 
-A part of NLP is Natural Language Understanding (NLU) which aims to comprehend meaning and intent in natural language.
-Opposite of this, Natural Language Generation (NLG) focuses on generating original human-like texts.
-To achieve NLU and NLG, language models make use of so-called encoders and decoders.
-The purpose of encoders is to turn input texts into fixed-size vectors that act as abstract representations.
-Language models then use decoders to turn such representations into a generated target output.
-This approach works well on tasks that map input sequences to output sequences (sec2sec), such as language
-translation\ \citep{sutskever2014sequence, cho2014learning}.
+One application of NLP is that of Large Language Models (LLMs).
+These models have been trained on immense amounts of natural-language data and are capable of understanding and
+generating texts to perform a wide range of tasks\ \citep{ibm:llm}.
+They are designed to be applied in any domain or industry, erasing the need to create or train a domain-specific model.
+Their ability to identify contextual relationships and recognize complex patterns\ \citep{bordt2024data} in a short
+amount of time makes LLMs the perfect entrypoint to automate triage and thus optimize the incident response workflow.
 
-In 2014,\ \citet{bahdanau2014neural} introduced the concept of attention which rids the encoders of creating
-fixed-length vectors, allowing language models to focus on the most relevant parts of texts and enabling operations on
-much longer input sequences.
-Based on this,\ \citet{vaswani2017attention} developed the transformer architecture in 2017, setting the precedent for
-modern LLMs.
-Transformers are superior in quality, more parallelizable, thus faster, and take less time to train.
-
-Early well-known examples of such transformer-based models are BERT
-(Bidirectional Encoder Representations from Transformers)\ \citep{devlin2018bert}, and
-GPT (Generative Pre-trained Transformer)\ \citep{radford2018improving}.
-\begin{itemize}
-    \item BERT was specifically designed as a pre-trained model to be easily fine-tuned for a wide range of tasks such
-    as answering questions and natural language inference, without the need of task-specific architecture.
-    In the cybersecurity domain, BERT models have been fine-tuned to detect malicious software\ \citep{rahali2021malbert}
-    and phishing emails\ \citep{lee2020catbert}.
-    \item GPT is pre-trained on a large amount of unlabeled data and designed to generate coherent context-specific
-    text.
-    Like BERT, it requires fine-tuning to adapt the model to specific tasks.
-\end{itemize}
-
-(TODO: disadvantages fine-tuned models vs general models) % TODO
-
-\subsection{Research Structure}
-\label{subsec:intro-research-structure}
-
-% TODO citations
-
-This research aims to explore the potential of LLMs in optimizing the triage process, as well as evaluate the
-performance of different LLMs (e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3\ [?],
-Mistral\ \citep{jiang2023mistral}) and establish a comparison of these models.
+This research aims to explore the potential of LLMs in optimizing the triage process, establish ways to
+evaluate the performance of LLMs in cybersecurity, and present a comparison of different models
+(e.g.,\ GPT-4\ \citep{achiam2023gpt}, Llama 3\ \citep{meta:llama3}, Mistral\ \citep{jiang2023mistral}) when automating
+triage steps.
 To pursue our goal, we define the following research questions (RQ) as the basis of our research:
 
 \begin{itemize}
-    \item \textbf{RQ1:} How can LLMs be integrated into the existing incident response workflow to streamline the triage process?
-    \item \textbf{RQ2:} What suitable evaluation metrics should be used to assess the performance of LLMs in cybersecurity triage?
+    \item \textbf{RQ1:} How can LLMs be integrated into the existing incident response workflow to streamline the triage
+    process?
+    \item \textbf{RQ2:} What suitable evaluation metrics should be used to assess the performance of LLMs in
+    cybersecurity triage?
     \item \textbf{RQ3:} How do different LLMs compare in performance when optimizing the cybersecurity triage process?
 \end{itemize}
 

@@ -1,24 +1,60 @@
 \section{Optimizing Triage Using LLMs}
 \label{sec:rq1}
 
-Explain structure of this section.
+This section intends to answer RQ1: \textit{How can LLMs be integrated into the existing incident response workflow to
+streamline the triage process?}
+Firstly, a rundown of the triage process is given by providing examples of the steps taken when identifying the priority
+of an alarm.
+Secondly, existing and proposed solutions of optimizing triage are summarized.
+Then, a general use of LLMs is given using a brief overview of the recent advances made in NLP\@, after which examples
+of LLMs performing relevant tasks are provided.
+Lastly, using these findings, \dots (answer RQ1) % TODO
 
 \subsection{Steps of Triage}
 \label{subsec:rq1-steps-of-triage}
 
-What is triage in detail?
+(TODO: What is triage in detail?) % TODO
 
-\subsection{Existing Optimizations}
+\subsection{Existing Triage Automations/Optimizations}
 \label{subsec:rq1-existing-optimizations}
 
 What are the existing methods of optimization?
 
-\subsection{Use of LLMs}
+\subsection{General Usage of LLMs}
 \label{subsec:rq1-use-of-llms}
 
-What relevant things are LLMs used for?
+LLMs make use of Natural Language Understanding (NLU) and Natural Language Generation (NLG).
+NLU aims to comprehend meaning and intent in natural language, while NLG focuses on generating original human-like
+texts.
+To achieve NLU and NLG, language models make use of so-called encoders and decoders.
+The purpose of encoders is to turn input texts into fixed-size vectors that act as abstract representations.
+Language models then use decoders to turn such representations into a generated target output.
+This approach works well on tasks that map input sequences to output sequences (sec2sec), such as language
+translation\ \citep{sutskever2014sequence, cho2014learning}.
 
-\subsection{LLMs in Context of Triage}
+In 2014,\ \citet{bahdanau2014neural} introduced the concept of attention which rids the encoders of creating
+fixed-length vectors, allowing language models to focus on the most relevant parts of texts and enabling operations on
+much longer input sequences.
+Based on this,\ \citet{vaswani2017attention} developed the transformer architecture in 2017, setting the precedent for
+modern LLMs.
+Transformers are superior in quality, more parallelizable, and take less time to train.
+
+Early well-known examples of such transformer-based models are BERT
+(Bidirectional Encoder Representations from Transformers)\ \citep{devlin2018bert}, and
+GPT (Generative Pre-trained Transformer)\ \citep{radford2018improving}.
+\begin{itemize}
+    \item BERT was specifically designed as a pre-trained model to be easily fine-tuned for a wide range of tasks such
+    as answering questions and natural language inference, without the need of task-specific architecture.
+    In the cybersecurity domain, BERT models have been fine-tuned to detect malicious
+    software\ \citep{rahali2021malbert} and phishing emails\ \citep{lee2020catbert}.
+    \item GPT is pre-trained on a large amount of unlabeled data and designed to generate coherent context-specific
+    text.
+    Like BERT, it requires fine-tuning to adapt the model to specific tasks.
+\end{itemize}
+
+(TODO: disadvantages fine-tuned models vs general models) % TODO
+
+\subsection{Using LLMs to Optimize Triage}
 \label{subsec:rq1-llms-in-context}
 
 Answering RQ1.

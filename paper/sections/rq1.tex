@@ -6,7 +6,7 @@ streamline the triage process?}
 Firstly, a rundown of the triage process is given by providing examples of the steps taken when identifying the priority
 of an alarm.
 Secondly, existing and proposed solutions of optimizing triage are summarized.
-Then, a general use of LLMs is given using a brief overview of the recent advances made in NLP\@, after which examples
+Then, a general use of LLMs is given using a brief overview of the recent advances made in NLP, after which examples
 of LLMs performing relevant tasks are provided.
 Lastly, using these findings, \dots (answer RQ1) % TODO
 
@@ -27,9 +27,9 @@ The proposed solution also eliminates redundancies in the graphs, thereby preven
 consisting of thousands of nodes.
 Based on academic datasets, the result is a system that quickly reconstructs paths that give insight into multistep
 threats in a network, which is an otherwise time-consuming task for human analysts.
-(TODO: How are alert paths detected) % TODO
+(TODO: How are alert paths detected (can't find full paper)) % TODO
 
-Additionally, \citet{serketzis2019improving} propose a model that integrates Cyber Threat Intelligence (CTI) into the
+Additionally,\ \citet{serketzis2019improving} propose a model that integrates Cyber Threat Intelligence (CTI) into the
 process.
 CTI involves collecting and analyzing information about potential and existing threats.
 The model aims to enhance Digital Forensic Readiness (DFR), which is the preparation of digital forensics through
@@ -50,7 +50,27 @@ Three independent but interrelated modules form the basis of the model:
     looking to preview potentially adverse incidents.
     Besides identifying suspicious activity, the module provides potential instigating factors.
 \end{enumerate}
-The resulting model is shown to have a high accuracy of 90.73\% when being tested on network data.
+The resulting model is shown to have a high accuracy of 90.73\% when testing network data for malicious activity.
+
+Besides that,\ \citet{zhong2018learning} approached the automation of triage by tracing the operations of professional
+security analysts.
+As junior analysts are typically responsible for conducting triage, this approach effectively speeds up the process.
+Finite state machines were constructed based on the senior analysts' patterns and were used to achieve high-speed triage
+with a low number of false positives.
+However, limitations include a high number of false negatives as well as a dependency on high-performing security
+analysts to maximize the performance of the automated system.
+Extending this approach,\ \citet{lin2018data} feeds contexts into a recurrent neural network which detects matching
+traces and presents these to novice analysts which in turn trains them in effective triage.
+
+Finally, it is worth noting that a high level of automation can have adverse effects on the overall performance of
+security analysts when performing triage because of the following reasons:
+\begin{enumerate}
+    \item Understanding and conducting full-time monitoring of the automation can increase
+    workload\ \citep{kaber2004effects}.
+    \item The level of trust in automation can lead to over-reliance or neglect\ \citep{lee2004trust}.
+\end{enumerate}
+Hence, it is crucial to maintain a level of human interaction when automating the steps of triage, and to prioritize
+user-friendliness of integrated tools.
 
 (TODO: limitations of existing solutions (don't consider steps involving human language)) % TODO
 
@@ -80,7 +100,8 @@ GPT (Generative Pre-trained Transformer)\ \citep{radford2018improving}:
     \item BERT was specifically designed as a pre-trained model to be easily fine-tuned for a wide range of tasks such
     as answering questions and natural language inference, without the need of task-specific architecture.
     In the cybersecurity domain, BERT models have been fine-tuned to detect malicious
-    software\ \citep{rahali2021malbert} and phishing emails\ \citep{lee2020catbert}.
+    software\ \citep{rahali2021malbert} and phishing emails\ \citep{lee2020catbert}, in addition to performing general
+    cybersecurity tasks\ \citep{bayer2024cysecbert}.
     \item GPT is pre-trained on a large amount of unlabeled data and designed to generate coherent context-specific
     text.
     Like BERT, it requires fine-tuning to adapt the model to specific tasks.

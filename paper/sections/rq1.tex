@@ -22,10 +22,10 @@ that can be followed:
     This includes the origin of the alarm (e.g.,\ in the cloud or on-premise) and what time it was created.
     \item \textbf{Analyzing the context.}
     The analyst looks through the given alarm data and identifies the affected entities (e.g.,\ users, data, systems or
-    operations) and to what extent.
+    operations) and to what extent they are affected.
     \item \textbf{Correlating the alarm.}
-    Based on the alarm context, the analyst searches whether the alarm has been seen before, either within the current
-    network or a different one, or if related alarms have occurred.
+    Based on the alarm context, the analyst searches whether the alarm has been seen before or if related alarms have
+    occurred, either within the current network or a different one.
     \item \textbf{Identifying the position in the kill chain.}
     To assess potential consequences, the position of the alarm within the kill chain is determined.
     This is done by using the MITRE ATT\&CK\ \citep{strom2018mitre} framework or the Cyber Kill
@@ -143,13 +143,22 @@ applicability and can potentially include bias.
 Another disadvantage is the phenomenon of catastrophic forgetting where existing models forget their original knowledge
 after being trained on new data.
 
-The introduction of much larger general models such as GPT-4\ \citep{achiam2023gpt}, Llama 3\ \citep{meta:llama3},
-Mistral\ \citep{jiang2023mistral} intends to eliminate these problems.
+The introduction of much larger general models such as GPT-4\ \citep{achiam2023gpt} and Llama 3\ \citep{meta:llama3}
+intends to eliminate these problems.
 The broad availability and applicability of these large general models allows organizations to easily integrate them to
 optimize general and specific tasks.
+These models are relatively new and currently have limited research available on their use, but proposed
+applications of fine-tuned LLMs still provide valuable insights into their potential for optimizing triage.
 
+For example,\ \citet{karlsen2024large} propose a system that uses LLMs to perform log analysis.
+Where previous methods of analysis relied on rule-based or statistical approaches, LLMs are able to learn complex
+patterns and relationships within log data without requiring manual feature engineering.
+The study focuses on fine-tuning models such as BERT and GPT-2\ \citep{radford2019language} through self-supervised
+learning where the LLMs automatically label data by identifying relations.
+Larger models like GPT-4 and Llama 2\ \citep{touvron2023llama} were not used due to their high parameter counts,
+leading to increased computational requirements during the fine-tuning process.
 
-(TODO: examples of applied general models) % TODO
+(TODO: more examples of applied general models) % TODO
 
 \subsection{Using LLMs to Optimize Triage}
 \label{subsec:rq1-llms-in-context}

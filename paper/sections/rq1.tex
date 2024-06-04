@@ -13,7 +13,32 @@ Lastly, using these findings, \dots (answer RQ1) % TODO
 \subsection{Steps of Triage}
 \label{subsec:rq1-steps-of-triage}
 
-(TODO: What is triage in detail?) % TODO
+The goal of triage is to follow a structured process to quickly assess and prioritize security alarms.
+Although the steps of triage are not set in stone and depend on the type of alarm, there are a number of basic tasks
+that can be followed:
+\begin{enumerate}
+    \item \textbf{Understanding the alarm.}
+    The security analyst intends to understand the nature of the alarm.
+    This includes the origin of the alarm (e.g.,\ in the cloud or on-premise) and what time it was created.
+    \item \textbf{Analyzing the context.}
+    The analyst looks through the given alarm data and identifies the affected entities (e.g.,\ users, data, systems or
+    operations) and to what extent.
+    \item \textbf{Correlating the alarm.}
+    Based on the alarm context, the analyst searches whether the alarm has been seen before, either within the current
+    network or a different one, or if related alarms have occurred.
+    \item \textbf{Identifying the position in the kill chain.}
+    To assess potential consequences, the position of the alarm within the kill chain is determined.
+    This is done by using the MITRE ATT\&CK\ \citep{strom2018mitre} framework or the Cyber Kill
+    Chain\ \citep{lockheed2011ckc} framework as a reference.
+    This also depends on other potentially correlated alarms.
+    \item \textbf{Prioritizing the alarm.}
+    The analyst concludes how severe the alarm is and assigns a priority of high, medium, low or no threat.
+\end{enumerate}
+
+The overall process should ideally not take longer than 30 minutes, because high-priority alarms need to be handled as
+urgently as possible.
+To meet this time constraint, it is essential to integrate tools and processes to allow analysts to perform triage
+efficiently.
 
 \subsection{Existing Triage Automations/Optimizations}
 \label{subsec:rq1-existing-optimizations}
@@ -64,15 +89,19 @@ traces and presents these to novice analysts which in turn trains them in effect
 
 Finally, it is worth noting that a high level of automation can have adverse effects on the overall performance of
 security analysts when performing triage because of the following reasons:
-\begin{enumerate}
+\begin{itemize}
     \item Understanding and conducting full-time monitoring of the automation can increase
     workload\ \citep{kaber2004effects}.
     \item The level of trust in automation can lead to over-reliance or neglect\ \citep{lee2004trust}.
-\end{enumerate}
+\end{itemize}
 Hence, it is crucial to maintain a level of human interaction when automating the steps of triage, and to prioritize
 user-friendliness of integrated tools.
 
-(TODO: limitations of existing solutions (don't consider steps involving human language)) % TODO
+One limitation of all the previously proposed automations is that they do not involve NLP\@.
+Triage requires understanding and interpreting content surrounding the alarm, such as logs, announcements and other
+forms of natural or unstructured language, which are challenging to automate through conventional methods.
+Therefore, the following section will discuss how LLMs can be used to optimize such tasks and ultimately automate steps
+of triage.
 
 \subsection{General Usage of LLMs}
 \label{subsec:rq1-use-of-llms}
@@ -107,9 +136,20 @@ GPT (Generative Pre-trained Transformer)\ \citep{radford2018improving}:
     Like BERT, it requires fine-tuning to adapt the model to specific tasks.
 \end{itemize}
 
-(TODO: disadvantages fine-tuned models vs general models) % TODO
+The disadvantage of these models is that they are relatively small and require fine-tuning to be applied to
+domain-specific tasks.
+Fine-tuning using domain-specific data is not only resource and time-intensive, but the resulting models have limited
+applicability and can potentially include bias.
+Another disadvantage is the phenomenon of catastrophic forgetting where existing models forget their original knowledge
+after being trained on new data.
 
-(TODO: general uses of LLMs) % TODO
+The introduction of much larger general models such as GPT-4\ \citep{achiam2023gpt}, Llama 3\ \citep{meta:llama3},
+Mistral\ \citep{jiang2023mistral} intends to eliminate these problems.
+The broad availability and applicability of these large general models allows organizations to easily integrate them to
+optimize general and specific tasks.
+
+
+(TODO: examples of applied general models) % TODO
 
 \subsection{Using LLMs to Optimize Triage}
 \label{subsec:rq1-llms-in-context}

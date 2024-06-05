@@ -8,7 +8,7 @@ of an alarm.
 Secondly, existing and proposed solutions of optimizing triage are summarized.
 Then, a general use of LLMs is given using a brief overview of the recent advances made in NLP, after which examples
 of LLMs performing relevant tasks are provided.
-Lastly, using these findings, \dots (answer RQ1) % TODO
+Lastly, using these findings, possible automations for the triage process are identified.
 
 \subsection{Steps of Triage}
 \label{subsec:rq1-steps-of-triage}
@@ -160,7 +160,21 @@ leading to increased computational requirements during the fine-tuning process.
 
 (TODO: more examples of applied general models) % TODO
 
+(TODO: system prompts) % TODO
+
 \subsection{Using LLMs to Optimize Triage}
 \label{subsec:rq1-llms-in-context}
 
-Answering RQ1.
+When applying LLMs to specific tasks, it is important to keep the tasks short and simple to ensure the results are
+consistent and easily testable.
+Referring to the triage steps in\ \ref{subsec:rq1-steps-of-triage}, all tasks that involve natural language or
+unstructured textual data have the potential to be automated using LLMs.
+Since the optimizations are ideally applicable across all kinds of alarms, the following possible automations are
+identified:
+\begin{itemize}
+    \item Detecting if an email is an announcement.
+    \item Detecting if an announcement is related to an alarm.
+    \item Correlating an alarm with other alarms and identifying if there are relationships.
+    \item Determining the position of an alarm in the kill chain.
+    \item Determining the priority of an alarm as high, medium, low or no threat.
+\end{itemize}

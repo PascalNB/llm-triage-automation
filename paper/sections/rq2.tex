@@ -28,9 +28,15 @@ diversity\ \citep{liu2023gpteval}.
 On the other hand, NLP-based evaluation techniques are more accurate but less reliable.
 Metrics such as BERTScore\ \citep{zhang2019bertscore} and BLEURT\ \citep{sellam2020bleurt} do not use LLMs, but provide
 a score by comparing generated and reference texts while taking semantics into account.
-\citet{liu2023gpteval} propose G-EVAL\dots
 
-\subsection{Evaluating use LLMs in Triage}
+Besides that,\ \citet{liu2023gpteval} propose G-EVAL, a framework that uses GPT-4 to evaluate LLM outputs.
+First, evaluation steps are generated based on a given task and evaluation criteria.
+Then, the steps are used to assess an LLMs output given an input prompt and a score ranging from 1 to 5 is given.
+The resulting score takes semantics into account, and the resulting evaluation is more correlated with human judgment.
+However, it is unreliable due to the arbitrary nature of LLM output, and it is biased towards LLM-generated texts
+because evaluated human-written texts were assigned lower scored.
+
+\subsection{Evaluating use of LLMs in Triage}
 \label{subsec:rq2-evaluating-triage}
 
 (TODO: apply metrics to context) % TODO

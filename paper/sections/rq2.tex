@@ -1,4 +1,36 @@
 \section{Evaluation of LLMs in Cybersecurity Tasks}
 \label{sec:rq2}
 
-Research question 2
+This section intends to answer RQ2:
+\textit{What suitable evaluation metrics should be used to assess the performance of LLMs in cybersecurity triage?}
+Firstly, existing evaluation metrics for LLMs are identified.
+Finally, the most suitable metrics are determined to establish a testing framework for LLMs in the context of
+cybersecurity triage-related tasks.
+
+\subsection{Existing LLM Evaluation Metrics}
+\label{subsec:rq2-existing-metrics}
+
+Due to the inherent ambiguity of human language, it is challenging to evaluate the output of an LLM\@.
+Outputs of LLMs are not numerical in nature, but evaluation algorithms should produce a numerical score.
+This necessitates the use of sophisticated evaluation metrics.
+Besides simple human evaluation techniques like expert reviews and crowdsourcing, there are some notable automated
+metrics to measure LLM performance:
+\begin{itemize}
+    \item The BLEU\ \citep{papineni2002bleu} score is specifically designed to test machine translation by matching
+    output texts with reference texts.
+    \item The ROUGE\ \citep{lin2004rouge} score is used to evaluate text summaries by comparing model outputs with
+    expected outputs.
+\end{itemize}
+These evaluation scores are purely statistical and thus reliable, but do not consider the nuances of semantics.
+They demonstrate a low correlation with human judgments, particularly in tasks related to creativity and
+diversity\ \citep{liu2023gpteval}.
+
+On the other hand, NLP-based evaluation techniques are more accurate but less reliable.
+Metrics such as BERTScore\ \citep{zhang2019bertscore} and BLEURT\ \citep{sellam2020bleurt} do not use LLMs, but provide
+a score by comparing generated and reference texts while taking semantics into account.
+\citet{liu2023gpteval} propose G-EVAL\dots
+
+\subsection{Evaluating use LLMs in Triage}
+\label{subsec:rq2-evaluating-triage}
+
+(TODO: apply metrics to context) % TODO

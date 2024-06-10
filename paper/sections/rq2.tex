@@ -26,19 +26,42 @@ They demonstrate a low correlation with human judgments, particularly in tasks r
 diversity\ \citep{liu2023gpteval}.
 
 On the other hand, NLP-based evaluation techniques are more accurate but less reliable.
-Metrics such as BERTScore\ \citep{zhang2019bertscore} and BLEURT\ \citep{sellam2020bleurt} do not use LLMs, but provide
-a score by comparing generated and reference texts while taking semantics into account.
+Metrics such as BERTScore\ \citep{zhang2019bertscore} and BLEURT\ \citep{sellam2020bleurt} use descriptive LLMs such as
+BERT to provide a score by comparing generated and reference texts while taking semantics into account.
 
-Besides that,\ \citet{liu2023gpteval} propose G-EVAL, a framework that uses GPT-4 to evaluate LLM outputs.
+Besides that,\ \citet{liu2023gpteval} propose G-EVAL, a framework that uses generative LLMs such as GPT-4 or
+GPT-3\ \citep{brown2020language} to evaluate LLM outputs.
 First, evaluation steps are generated based on a given task and evaluation criteria.
 Then, the steps are used to assess an LLMs output given an input prompt and a score ranging from 1 to 5 is given.
 The resulting score takes semantics into account, and the resulting evaluation is more correlated with human judgment.
 However, it is unreliable due to the arbitrary nature of LLM output, and it is biased towards LLM-generated texts
-because evaluated human-written texts were assigned lower scored.
+compared to human-written texts.
 
-(TODO: task-specific evaluations) % TODO
+The assigned automations in the triage process are task-specific and only require tests on the correctness of the answer
+by the LLM\@.
+Answers are classified as true positive, false positive, true negative and false negative, depending on the actual
+classification of data the model's prediction.
+From these four classifications, different evaluation metrics can be constructed.
+The following task-specific metrics are suitable:
+\begin{itemize}
+    \item \textbf{Accuracy} is the ratio of correct predictions to the total number of answers.
+    It gives an overall indication of the model's ability to make correct predictions, but can be misleading if the
+    testing or real-world data is imbalanced.
+    \item \textbf{Precision} is the ratio of correct answers compared to all answers that were flagged positive by the
+    LLM\@.
+    A high precision indicates a low false positive rate.
+    \item \textbf{Recall} is the ratio of correct predictions to the total number of actual positives in the test data.
+    A high recall indicates a low false negative rate.
+    \item \textbf{F1-score} is a harmonic mean of precision and recall.
+    As a metric, it represents a balance between precision and recall, capturing the performance using both metrics.
+\end{itemize}
 
 \subsection{Evaluating use of LLMs in Triage}
 \label{subsec:rq2-evaluating-triage}
+
+In the triage process, a large number of false positives would cause the alarm queue to be filled up, resulting in
+limited time for analysts to conduct thorough investigations.
+On the other hand, a large number of false negatives would result in critical alarms being missed.
+Therefore, it is important to balance these metrics when evaluating LLMs.
 
 (TODO: apply metrics to context) % TODO

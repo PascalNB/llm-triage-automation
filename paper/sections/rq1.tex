@@ -106,6 +106,8 @@ of triage.
 \subsection{General Usage of LLMs}
 \label{subsec:rq1-use-of-llms}
 
+(TODO: check relevance of following section) % TODO
+
 LLMs make use of Natural Language Understanding (NLU) and Natural Language Generation (NLG).
 NLU aims to comprehend meaning and intent in natural language, while NLG focuses on generating original human-like
 texts.
@@ -160,7 +162,7 @@ leading to increased computational requirements during the fine-tuning process.
 
 (TODO: more examples of applied general models) % TODO
 
-(TODO: system prompts, user prompts) % TODO
+(TODO: system prompts, / user prompts) % TODO
 
 \subsection{Using LLMs to Optimize Triage}
 \label{subsec:rq1-llms-in-context}
@@ -172,8 +174,12 @@ unstructured textual data have the potential to be automated using LLMs.
 Since the optimizations are ideally applicable across all kinds of alarms, the following possible automations are
 identified:
 \begin{itemize}
-    \item Detecting if an email is an announcement.
+    \item \textbf{Detecting if an email is an announcement.}
+    This means letting the LLM process the entire email and concluding if it contains any information regarding actions
+    that could trigger alarm generation.
     \item Detecting if an announcement is related to an alarm.
+    This involves feeding both the announcement and alarm data into the LLM and determining whether a correlation
+    exists.
     \item Correlating an alarm with other alarms and identifying if there are relationships.
     \item Determining the position of an alarm in the kill chain.
     \item Determining the priority of an alarm as high, medium, low or no threat.

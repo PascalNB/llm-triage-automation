@@ -13,11 +13,15 @@ cybersecurity triage-related tasks.
 Due to the inherent ambiguity of human language, it is challenging to evaluate the output of an LLM\@.
 Outputs of LLMs are not numerical in nature, but evaluation algorithms should produce a numerical score.
 This necessitates the use of sophisticated evaluation metrics.
+
+\subsubsection{Reference-based evaluation}
+
 Besides simple human evaluation techniques like expert reviews and crowdsourcing, there are some notable automated
 metrics to measure LLM performance:
 \begin{itemize}
     \item The BLEU\ \citep{papineni2002bleu} score is specifically designed to test machine translation by matching
     output texts with reference texts.
+
     \item The ROUGE\ \citep{lin2004rouge} score is used to evaluate text summaries by comparing model outputs with
     expected outputs.
 \end{itemize}
@@ -25,44 +29,65 @@ These evaluation scores are purely statistical and thus reliable, but do not con
 They demonstrate a low correlation with human judgments, particularly in tasks related to creativity and
 diversity\ \citep{liu2023gpteval}.
 
-On the other hand, NLP-based evaluation techniques are more accurate but less reliable.
+\subsubsection{NLP-based evaluation}
+
+NLP-based evaluation techniques are more accurate but less reliable.
 Metrics such as BERTScore\ \citep{zhang2019bertscore} and BLEURT\ \citep{sellam2020bleurt} use descriptive LLMs such as
 BERT to provide a score by comparing generated and reference texts while taking semantics into account.
 
 Besides that,\ \citet{liu2023gpteval} propose G-EVAL, a framework that uses generative LLMs such as GPT-4 or
 GPT-3\ \citep{brown2020language} to evaluate LLM outputs.
 First, evaluation steps are generated based on a given task and evaluation criteria.
-Then, the steps are used to assess an LLMs output given an input prompt and a score ranging from 1 to 5 is given.
+Then, the steps are used to assess an LLMs output and a score ranging from 1 to 5 is given.
 The resulting score takes semantics into account, and the resulting evaluation is more correlated with human judgment.
 However, it is unreliable due to the arbitrary nature of LLM output, and it is biased towards LLM-generated texts
 compared to human-written texts.
 
-(TODO: section about Prometheus\ \citep{kim2023prometheus})
+Similarly,\ \citet{kim2023prometheus} introduce Prometheus, an LLM-based evaluator.
+Proprietary LLMs, such as used in G-EVAL, do not fully disclose internal operations, limiting fair evaluations.
+Furthermore, they might force version updates, impacting the consistency and replicability of evaluations.
+Lastly, financial constraints can make their use challenging.
+Because of this, Prometheus uses an open-source LMM that is fine-grained for evaluation and on par with the evaluation
+performance of GPT-4.
 
-The assigned automations in the triage process are task-specific and only require tests on the correctness of the answer
-by the LLM\@.
-Answers are classified as true positive, false positive, true negative and false negative, depending on the actual
-classification of data the model's prediction.
-From these four classifications, different evaluation metrics can be constructed.
-The following task-specific metrics are suitable:
+\subsubsection{Score-based evaluation}
+
+The assigned automations in the triage process are task-specific and only require tests on the correctness of the LLM's
+answer.
+Answers are classified as true positive, false positive, true negative and false negative, depending on the data's
+actual classification and the model's prediction.
+Using these four classifications, different suitable task-specific evaluation metrics can be constructed:
 \begin{itemize}
-    \item \textbf{Accuracy} is the ratio of correct predictions to the total number of answers.
+    \item \textbf{Accuracy:} The ratio of correct predictions to the total number of answers.
     It gives an overall indication of the model's ability to make correct predictions, but can be misleading if the
     testing or real-world data is imbalanced.
-    \item \textbf{Precision} is the ratio of correct answers compared to all answers that were flagged positive by the
+
+    \item \textbf{Precision:} The ratio of correct answers compared to all answers that were flagged positive by the
     LLM\@.
     A high precision indicates a low false positive rate.
-    \item \textbf{Recall} is the ratio of correct predictions to the total number of actual positives in the test data.
+
+    \item \textbf{Recall:} The ratio of correct predictions to the total number of actual positives in the test data.
     A high recall indicates a low false negative rate.
-    \item \textbf{F1-score} is a harmonic mean of precision and recall.
+
+    \item \textbf{F1-score:} A harmonic mean of precision and recall.
     As a metric, it represents a balance between precision and recall, capturing the performance using both metrics.
 \end{itemize}
 
 Besides answer-based evaluation techniques, the following additional metrics can be identified:
 \begin{itemize}
-    \item \textbf{Time}: The amount of time it takes for the LLM to provide a response.
-    \item \textbf{}
+    \item \textbf{Median time}: The median amount of time it takes for the LLM to provide a response.
+    While not as important as the previous metrics, it provides an insight into the responsiveness of the model.
+    This is applicable in cases where quick responses are critical, such as in the incident response workflow.
+    The median time is preferred over the mean time to mitigate the effect of outliers.
+
+    \item \textbf{Input Token Count}: The number of tokens in the input provided to the LLM\@.
+    It provides an insight into both the computational and financial costs of processing a prompt.
 \end{itemize}
+
+From this, a \textbf{cost-efficiency} metric can be introduced that evaluates the model's performance relative to the
+cost incurred.
+For example, a model with a high F1-score should not be preferred if the token costs make integrating the model
+financially infeasible.
 
 \subsection{Applying Evaluation Metrics to Triage}
 \label{subsec:rq2-evaluating-triage}

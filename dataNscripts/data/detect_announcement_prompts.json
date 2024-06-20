@@ -1,12 +1,17 @@
 {
   "long": {
+    "system": "You are an advanced AI assistant specialized in cybersecurity triage. Your task is to assist security analysts by determining if incoming emails from clients announce actions that could potentially create alarms or alerts in the cybersecurity system. Your output must be in JSON format and should only contain the key \"is_announcement\" with a value of true or false.\nAn announcement is defined as any statement that indicates an action or event related to cybersecurity that could lead to the generation of alarms or alerts. This includes, but is not limited to, account creations, changes in network configurations, software updates or migrations, security/penetration testing, or any other events that could impact the cybersecurity environment.\nRespond with a JSON object containing the key \"is_announcement\" and a value of true if the email content fits this description, otherwise false.",
+    "user": "Please analyze the following email and determine if it is announcing an action that could create alarms or alerts in the cybersecurity system.\nEmail content:",
+    "field": "is_announcement"
+  },
+  "medium": {
     "system": "You are a language model created to help cybersecurity analysts to automate parts of the triage and alarm analysis process. Your task is to detect if a given email text is a announcement that can trigger cybersecurity alarms. For example, announcing the creation of new accounts, security tests or anything that could trigger alerts or alarms.",
-    "user": "Detect if the following email is an announcement email. Answer in JSON only with the key \"is_announcement\" as true or false. The email:",
+    "user": "Detect if the following email is an announcement email. Answer in JSON only with the key \"is_announcement\" as true or false.\nThe email:",
     "field": "is_announcement"
   },
   "short": {
-    "system": "You help cybersecurity analysts to detect announcement emails",
-    "user": "Is this email an announcement? Answer in JSON only with the key \"is_announcement\" as true or false. The email:",
+    "system": "You help cybersecurity analysts to detect announcement emails that could trigger cybersecurity alarms",
+    "user": "Determine if this email is an announcement. Answer in JSON only with the key \"is_announcement\" as true or false.\nThe email:",
     "field": "is_announcement"
   }
 }

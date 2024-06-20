@@ -14,7 +14,7 @@ Due to the inherent ambiguity of human language, it is challenging to evaluate t
 Outputs of LLMs are not numerical in nature, but evaluation algorithms should produce a numerical score.
 This necessitates the use of sophisticated evaluation metrics.
 
-\subsubsection{Reference-based evaluation}
+\subsubsection{Statistical-based evaluation}
 
 Besides simple human evaluation techniques like expert reviews and crowdsourcing, there are some notable automated
 metrics to measure LLM performance:
@@ -73,32 +73,50 @@ Using these four classifications, different suitable task-specific evaluation me
     As a metric, it represents a balance between precision and recall, capturing the performance using both metrics.
 \end{itemize}
 
-Besides answer-based evaluation techniques, the following additional metrics can be identified:
+\subsubsection{Efficiency-based evaluation}
+
+Besides answer-based evaluation techniques, the following additional metrics can be identified to assess the efficiency
+of an LLM when performing a task:
 \begin{itemize}
-    \item \textbf{Median time}: The median amount of time it takes for the LLM to provide a response.
+    \item \textbf{Median time:} The median amount of time it takes for the LLM to provide a response.
     While not as important as the previous metrics, it provides an insight into the responsiveness of the model.
     This is applicable in cases where quick responses are critical, such as in the incident response workflow.
     The median time is preferred over the mean time to mitigate the effect of outliers.
 
-    \item \textbf{Input Token Count}: The number of tokens in the input provided to the LLM\@.
+    \item \textbf{Output Token Count:} The number of tokens in the output produced by the LLM\@.
     It provides an insight into both the computational and financial costs of processing a prompt.
+    It is particularly useful when comparing different models, because some models may generate unnecessarily verbose
+    responses.
+    However, it has no significant use when all models are prompted to adhere to a specific output format such as a
+    single value or in JSON\ \citep{bray2017json}.
 \end{itemize}
 
 From this, a \textbf{cost-efficiency} metric can be introduced that evaluates the model's performance relative to the
 cost incurred.
-For example, a model with a high F1-score should not be preferred if the token costs make integrating the model
+For example, a model with a high performance score should not be preferred if the token costs make integrating the model
 financially infeasible.
+
+\subsubsection{Reliability-based evaluation}
+% TODO
+
+\begin{itemize}
+    \item \textbf{Consistency:}
+    \item \textbf{Error rate:} The rate of incorrect responses.
+    For example, the rate of outputs that do not follow an explicit format.
+\end{itemize}
 
 \subsection{Applying Evaluation Metrics to Triage}
 \label{subsec:rq2-evaluating-triage}
+% TODO
 
 In the triage process, a large number of false positives would cause the alarm queue to be filled up, resulting in
 limited time for analysts to conduct thorough investigations.
 On the other hand, a large number of false negatives would result in critical alarms being missed.
 Therefore, it is important to balance these metrics when evaluating LLMs.
 
-For the triage automations identified in section\ \ref{subsec:rq1-llms-in-context}, the metrics are applied as
-follows:
-\begin{itemize}
-    \item (TODO: apply metrics to context) % TODO
-\end{itemize}
+In the context of tasks that require consistent and strictly formatted outputs, the F1-score will provide a suitable
+performance metric.
+
+Error rate.
+
+Consistency is infeasible.

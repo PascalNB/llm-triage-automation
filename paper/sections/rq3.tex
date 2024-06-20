@@ -3,8 +3,76 @@
 
 This section intends to answer RQ3:
 \textit{How do different LLMs compare in performance when optimizing the cybersecurity triage process?}
-(TODO: explain section) % TODO
+The automation steps in section\ \ref{subsec:rq1-llms-in-context} are combined with the evaluation metrics as described
+in section\ \ref{subsec:rq2-evaluating-triage} to perform a comparison between various LLMs acros different tasks.
 
-\subsection{Evaluation Framework}
-\label{subsec:rq3-evaluation-framework}
+\subsection{Comparison Framework and Setup}
+\label{subsec:rq3-comparison-framework}
 
+The first LLM that is included in the comparison is GPT-4.
+The other models selected for the comparison are openly available and accessible through the
+Ollama\ \citep{ollama} library.
+The Ollama language model platform is chosen for its ease of use and its simplicity to deploy the most recent
+state-of-the-art models.
+It is capable of running a local server that receives API calls, enabling the execution of operations on models from
+external applications like a Jupyter Notebook\ \citep{kluyver2016jupyter}.
+
+Most models are released as a collection of multiple variants, each with a different parameter count.
+A model with a large number of parameters is expected to perform better, but requires more computational resources
+in contrast to a small model.
+Due to computational limits, only models with parameter counts of up to 14 billion have been selected.
+The selected models are Aya 23\ \citep{aryabumi2024aya}, Code Llama\ \citep{roziere2023code},
+Gemma\ \citep{team2024gemma}, Llama 3, Mistral\ \citep{jiang2023mistral} and Phi-3\ \citep{abdin2024phi}.
+The different models and their sizes and characteristics are as follows:
+\begin{itemize}
+    \item \textbf{GPT-4:} Developed by OpenAI as their fourth generation in their GPT series.
+    \item \textbf{Aya 23\ 8B:} A multilingual model developed by Cohere that supports 23 languages.
+    \item \textbf{Code Llama 13B:} A fine-tuned Llama model by Meta and designed for generating and discussing code.
+    \item \textbf{Gemma 7B:} Part of a family of lightweight models developed by Google DeepMind.
+    \item \textbf{Gemma 2B:} The smallest model variant of the Gemma model family.
+    \item \textbf{Llama 3\ 8B:} A capable pre-trained model developed by Meta and the third in their Llama series.
+    \item \textbf{Mistral 7B:} A versatile model developed by Mistral AI\@.
+    \item \textbf{Phi-3 14B:} A lightweight open model developed by Microsoft tailored to logic reasoning.
+    \item \textbf{Phi-3 3.8B:} The smallest model variant in the Phi-3 series.
+\end{itemize}
+
+\subsubsection{Announcement Detection}
+% TODO
+
+\subsection{Comparison Results}
+\label{subsec:rq3-comparison-results}
+% TODO
+
+\subsubsection{Announcement Detection}
+
+See table\ \ref{tab:announcement-detection}
+
+Notably, Phi-3 Medium is the only model that struggles to adhere to the requested output format.
+The error rates are 0.03, 0.15 and 0.75 for long, medium and short prompts respectively.
+
+\begin{table*}
+    \caption{%
+        F1-scores, median evaluation times in seconds and error rates of each model for different prompt sizes when
+        performing announcement detection.
+    }
+    \label{tab:announcement-detection}
+    \resizebox{\linewidth}{!}{
+        \begin{tabular}{lccccccccc}
+            \toprule
+            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Model}}} & \multicolumn{3}{c}{\textsc{Long prompt}} & \multicolumn{3}{c}{\textsc{Medium prompt}} & \multicolumn{3}{c}{\textsc{Short prompt}} \\
+            \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
+            & F1-score & Median time    & Error rate & F1-score & Median time    & Error rate & F1-score & Median time   & Error rate \\
+            \midrule
+            \textsc{GPT-4}          & 1.000    & \textit{8.456} & 0.000      & 0.950    & \textit{7.541} & 0.000      & 0.621    & \textit{10.940}      & 0.000      \\
+            \textsc{Aya 23\ 8B}     & 0.844    & 1.513          & 0.000      & 0.809    & 1.421          & 0.000      & 0.516    & 1.394           & 0.000      \\
+            \textsc{Code Llama 13B} & 1.000    & 3.426          & 0.000      & 0.706    & 3.389          & 0.000      & 0.529    & 3.315           & 0.000      \\
+            \textsc{Gemma 7B}       & 0.710    & 1.787          & 0.000      & 0.710    & 1.687          & 0.000      & 0.684    & 1.680           & 0.000      \\
+            \textsc{Gemma 2B}       & 0.788    & 0.194          & 0.000      & 0.333    & 0.192          & 0.000      & 0.667    & 0.192           & 0.000      \\
+            \textsc{Llama 3\ 8B}    & 1.000    & 0.656          & 0.000      & 0.900    & 0.619          & 0.000      & 0.837    & 0.623           & 0.000      \\
+            \textsc{Mistral 7B}     & 1.000    & 0.487          & 0.000      & 0.895    & 0.411          & 0.000      & 0.743    & 0.405           & 0.000      \\
+            \textsc{Phi-3 14B}      & 0.842    & 3.946          & 0.025      & 0.452    & 2.952          & 0.150      & 0.600    & 2.974           & 0.750      \\
+            \textsc{Phi-3 3.8B}     & 1.000    & 0.355          & 0.000      & 0.927    & 0.375          & 0.000      & 0.706    & 0.875           & 0.000      \\
+            \bottomrule
+        \end{tabular}
+    }
+\end{table*}

@@ -24,7 +24,7 @@ that can be followed:
 
     \item \textbf{Analyzing the context:} The analyst looks through the given alarm data and identifies the affected
     entities and to what extent they are affected.
-    This includes users, data, systems or operations.
+    This includes users, data, systems and operations.
 
     \item \textbf{Correlating the alarm:}
     Based on the alarm context, the analyst searches whether the alarm has been previously encountered or if related
@@ -59,7 +59,6 @@ The proposed solution also eliminates redundancies in the graphs, thereby preven
 consisting of thousands of nodes.
 Based on academic datasets, the result is a system that quickly reconstructs paths that give insight into multistep
 threats in a network, which is an otherwise time-consuming task for human analysts.
-(TODO: How are alert paths detected (can't find full paper)) % TODO
 
 Additionally,\ \citet{serketzis2019improving} propose a model that integrates Cyber Threat Intelligence (CTI) into the
 process.
@@ -101,7 +100,7 @@ security analysts when performing triage because of the following reasons:
 \begin{itemize}
     \item Understanding and conducting full-time monitoring of the automation can increase
     workload\ \citep{kaber2004effects}.
-    \item The level of trust in automation can lead to over-reliance or neglect\ \citep{lee2004trust}.
+    \item The level of trust in automation can lead to over-reliance or negligence\ \citep{lee2004trust}.
 \end{itemize}
 Hence, it is crucial to maintain a level of human interaction when automating the steps of triage, and to prioritize
 user-friendliness of integrated tools.
@@ -144,6 +143,7 @@ GPT (Generative Pre-trained Transformer)\ \citep{radford2018improving}:
 
     \item GPT is pre-trained on a large amount of unlabeled data and designed to generate coherent context-specific
     text.
+    It works by generating continuations based on the input text through probabilistic guesses.
     Like BERT, it requires fine-tuning to adapt the model to specific tasks.
 \end{itemize}
 

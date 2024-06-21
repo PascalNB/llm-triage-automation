@@ -97,26 +97,41 @@ For example, a model with a high performance score should not be preferred if th
 financially infeasible.
 
 \subsubsection{Reliability-based evaluation}
-% TODO
 
+In addition to performance metrics, it is important to verify the reliability of models by ensuring that they
+consistently produce outputs in the expected formats.
+The following performance metrics are suitable to measure these characteristics:
 \begin{itemize}
-    \item \textbf{Consistency:}
+    \item \textbf{Consistency:} Evaluates whether the model provides consistent output for the same inputs.
+    LLMs generally incorporate a degree of randomness to prevent training overfitting and ensure the diversity of
+    results.
+    However, this might not be beneficial when consistent outputs are crucial.
+    Moreover, a low consistency could decrease the reliability and replicability of the evaluation.
     \item \textbf{Error rate:} The rate of incorrect responses.
     For example, the rate of outputs that do not follow an explicit format.
 \end{itemize}
 
 \subsection{Applying Evaluation Metrics to Triage}
 \label{subsec:rq2-evaluating-triage}
-% TODO
 
 In the triage process, a large number of false positives would cause the alarm queue to be filled up, resulting in
 limited time for analysts to conduct thorough investigations.
 On the other hand, a large number of false negatives would result in critical alarms being missed.
 Therefore, it is important to balance these metrics when evaluating LLMs.
-
 In the context of tasks that require consistent and strictly formatted outputs, the F1-score will provide a suitable
-performance metric.
+performance score that balances these concerns.
 
-Error rate.
+When dealing with tasks that have definitive right or wrong answers, accuracy is the most appropriate measure to assess
+performance.
+This is also the case for multiclass classifications that are relatively balanced.
+For instance, the task of identifying the MITRE ATT\&CK tactic or technique associated with an alarm or action can be
+evaluated through accuracy.
 
-Consistency is infeasible.
+For all tasks, the error rate is an important metric.
+It assesses the general usability of a model, because models are challenging to evaluate and impossible to implement
+within an organization when they frequently produce unusable responses.
+Additionally, the consistency of a model is important because it ensures that an evaluation reflects the real-world
+implementation.
+
+Incorporating these metrics into an evaluation framework provides a suitable procedure to assess the performance of LLMs
+in cybersecurity triage.

@@ -5,6 +5,8 @@ This section intends to answer RQ3:
 \textit{How do different LLMs compare in performance when optimizing the cybersecurity triage process?}
 The automation steps in section\ \ref{subsec:rq1-llms-in-context} are combined with the evaluation metrics as described
 in section\ \ref{subsec:rq2-evaluating-triage} to perform a comparison between various LLMs acros different tasks.
+Firstly, an overview of the experiment setup is given.
+After that, the comparison results are provided.
 
 \subsection{Comparison Framework and Setup}
 \label{subsec:rq3-comparison-framework}
@@ -36,16 +38,49 @@ The different models and their sizes and characteristics are as follows:
     \item \textbf{Phi-3 3.8B:} The smallest model variant in the Phi-3 series.
 \end{itemize}
 
-\subsubsection{Announcement Detection}
-% TODO
+The evaluation framework is written in Python and contained within a Jupyter Notebook.
+This supports transparency and replicability of the experiment because the code can be executed on other future LLMs to
+assess and compare their performances.
+
+% TODO cite
+The data used in this study consists of 20 cybersecurity announcement emails provided by Northwave Cyber Security.
+The emails are manually analyzed to determine what possible alarms could be generated as a consequence of the announced
+actions, after which the MITRE ATT\&CK tactics are identified.
+Additionally, 20 non-announcement emails are randomly taken from the Enron email dataset.
+
+Using this data, the following tasks are evaluated:
+\begin{enumerate}
+    \item \textbf{Announcement Detection:} The LLM has to determine whether a given email is a cybersecurity
+    announcement.
+    The model is prompted to output its answer in JSON with a single key \texttt{is\_announcement}.
+    The evaluation metrics are: F1-score, median time and error rate.
+    \item \textbf{Tactic Detection:} The LLM has to determine what the MITRE ATT\&CK tactic is of the alarms that could
+    be generated as a result of the activity that is expressed in an announcement.
+    These tactics are: Reconnaissance, Resource Development, Initial Access, Execution, Persistence, Privilege
+    Escalation, Defense Evasion, Credential Access, Discovery, Lateral Movement, Collection, Command and Control,
+    Exfiltration, and Impact.
+    The model is prompted to output its answer in JSON with a single key \texttt{tactic}.
+    The evaluation metrics are: accuracy, median time and error rate.
+\end{enumerate}
+
+For each task, prompts of different lengths are constructed to assess the impact of prompt size on the model's
+performance.
+Complex tasks like tactic detection are not possible to execute with short prompts due to the lack of sufficient
+information.
 
 \subsection{Comparison Results}
 \label{subsec:rq3-comparison-results}
-% TODO
 
 \subsubsection{Announcement Detection}
+The task of detection cybersecurity announcements was performed using three different prompt sizes.
+An overview of the results is presented in table\ \ref{tab:announcement-detection}.
+The best F1-scores for each prompt are highlighted in \textbf{bold}.
+It is important to note that GPT-4 is the only model not operating within the same system as the other models.
+Hence, time-based metrics should only be compared amongst models within the same system.
+To highlight this, the median times of GPT-4 are made \textit{italic}.
 
-See table\ \ref{tab:announcement-detection}
+For the long prompt, GPT-4, Code Llama, Llama 3, Mistral and Phi-3\ 3.8B score equally high with an F1-score of 1.
+
 
 Notably, Phi-3 Medium is the only model that struggles to adhere to the requested output format.
 The error rates are 0.03, 0.15 and 0.75 for long, medium and short prompts respectively.

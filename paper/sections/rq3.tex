@@ -85,41 +85,21 @@ JSON, ensuring that their outputs adhere to the correct format.
 This, however, does not prevent the model from inventing its own JSON keys or values.
 Such a response will be considered an error and affects the model's error rate.
 
+Finally, all evaluations are conducted within the Jupyter Notebook running with an AMD Ryzen 7\ 4800H CPU and an NVIDIA
+GeForce RTX 2060 GPU\@.
+
 \subsection{Comparison Results}
 \label{subsec:rq3-comparison-results}
 
-All evaluations were conducted within the Jupyter Notebook running with an AMD Ryzen 7\ 4800H CPU and an NVIDIA GeForce
-RTX 2060 GPU\@.
-
-It is important to note that GPT-4 is the only model not operating within the same system as the other models.
-Changes in median times could be attributed to increased network traffic, server requests or timeouts, but the exact
-causes will be unknown.
-Hence, time-based metrics should only be compared amongst models within the same system.
-
-\subsubsection{Announcement Detection}
 The task of detection cybersecurity announcements was performed using the three prompt sizes on all nine models.
 An overview of the results is presented in Table\ \ref{tab:announcement-detection}.
 
 \input{tabs/announcement-detection}
 
-For the long prompt, GPT-4, Code Llama, Llama 3, Mistral and Phi-3\ 3.8B score equally high with an F1-score of 1.
-GPT-4 also scores high with the medium prompt with an F1-score of 0.95, which Phi-3 3.8B and Llama 3 closely follow
+For the long prompt, GPT-4, Code Llama, Llama 3, Mistral and Phi-3\ 3.8B scored equally high with an F1-score of 1.
+GPT-4 also scored high with the medium prompt with an F1-score of 0.95, which Phi-3 3.8B and Llama 3 closely followed
 with scores 0.927 and 0.9 respectively.
-Llama 3 scores the highest on the task with the short prompt with a score of 0.837.
-Only Llama 3, Mistral and Phi-3 3.8B show relatively consistent high scores across all three prompt sizes.
-
-Not only do smaller models operate faster in general than larger models, but Llama 3 and Mistral produce overall better
-results across the three prompts than bigger models like Code Llama and Phi-3 14B\@.
-Besides that, the median times of most models are consistent across all three prompt sizes, meaning that prompt size has
-no significant effect on evaluation time.
-Therefore, Llama 3, Mistral and Phi-3 3.8B are good choices when automating this task, as well as GPT-4 if processing
-times are of no concern when integrating a model into an organization.
-
-Notably, Phi-3 14B is the only model that struggles to adhere to the requested output format.
-The error rates are 0.03, 0.15 and 0.75 for long, medium and short prompts respectively.
-All errors can be attributed to the model's frequent inability to spell \texttt{is\_announcement} correctly.
-
-\subsubsection{Announcement Tactic Detection}
+Llama 3 scored the highest on the task with the short prompt with a score of 0.837.
 
 The task of detecting the MITRE ATT\&CK tactic of potential alarms following an email announcement was performed using
 the two prompt sizes on all nine models.
@@ -127,16 +107,7 @@ An overview of the results is presented in Table\ \ref{tab:tactic-detection}.
 
 \input{tabs/tactic-detection}
 
-GPT-4 shows the highest accuracy for both the long and medium-sized prompts with scores of 0.85 and 0.8 respectively.
-Mistral is generally the second-best model with accuracies of 0.7 and 0.6.
-Llama 3 follows this with scores of 0.6 and 0.65.
-All other models demonstrate a low accuracy, which highlights the difficulty in providing a comprehensive description
-of the task within a single prompt.
-
-There is no large difference between the scores for the different prompt sizes for all models.
-Similarly, the median evaluation time is unaffected by prompt size.
-Moreover, all the models performed error-free results, which is why error rates are excluded in the final result.
-
-Considering the displayed statistics, only GPT-4 is able to somewhat accurately perform the task.
-Models like Llama 3 and Mistral should only be considered in cases where a short evaluation time is critical or an when
-an organization strives only to use openly available models.
+GPT-4 showed the highest accuracy for both the long and medium-sized prompts with scores of 0.85 and 0.8 respectively.
+Mistral was generally the second-best model with accuracies of 0.7 and 0.6.
+Llama 3 followed this with scores of 0.6 and 0.65.
+All models performed error-free results, which is why error rates are excluded in the final result.

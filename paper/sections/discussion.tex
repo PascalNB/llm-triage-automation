@@ -1,6 +1,59 @@
 \section{Discussion}
 \label{sec:discussion}
 
-Discussion.
-Include reflection on triage vs analysis.
-Larger datasets needed.
+Quick summary
+
+\subsection{Analysis}
+\label{subsec:analysis}
+
+Firstly, it is important to note that GPT-4 is the only model not operating within the same system as the other models.
+Changes in median times could be attributed to increased network traffic, server requests or timeouts, but the exact
+causes are unknown.
+Hence, time-based metrics should generally only be compared amongst models within the same system.
+However, the median times still give an indication of expected evaluation durations when incorporating GPT-4 to perform
+similar tasks.
+%
+
+For all tasks of the conducted experiment, the median times of most models remained consistent regardless of prompt
+size.
+This suggests that prompt size does not have a significant impact on the evaluation time.
+Therefore, the choice of best prompt is dependent only on the resulting performance score.
+
+Considering the simple task of detecting announcements, only Llama 3, Mistral and Phi-3 3.8B show relatively consistent
+high scores across all three prompt sizes.
+Although GPT-4 has the best scores for long and medium-sized prompts, it falls behind on the short prompt.
+In general, not only do smaller models operate faster than larger models, but Llama 3 and Mistral produce overall better
+results across all tasks and prompts than bigger models like Code Llama and Phi-3 14B\@.
+Consequently, Llama 3, Mistral and Phi-3 3.8B are good choices when automating this task, as well as GPT-4 if processing
+times and are of no concern when integrating a model into an organization.
+
+Notably, Phi-3 14B is the only model that struggles to adhere to the requested output format with error rates of 0.03,
+0.15 and 0.75 for long, medium and short prompts respectively.
+All errors can be attributed to the model's frequent inability to spell \texttt{is\_announcement} correctly.
+This makes the model unreliable for simple tasks such as announcement detection.
+%
+
+On the task of detecting the MITRE ATT\&CK tactic of potentially generated alarms following a cybersecurity
+announcement, only GPT-4 displayed a level of competence.
+Although Llama 3 and Mistral had the second-best statistics, their accuracies can still be considered insufficient.
+All other models demonstrate a low accuracy, which highlights the difficulty in providing a comprehensive description
+of the task within a single prompt.
+Models like Llama 3 and Mistral should thus only be considered in cases where a short evaluation time is critical or
+when an organization strives only to use openly available models.
+
+Another noteworthy finding is that the accuracy does not significantly differ between prompt sizes.
+One reason for this could be that the medium prompt is not of sufficient quality and the long prompt is of equal quality
+but contains additional redundant information, resulting in equally low accuracies.
+However, GPT-4's ability to accurately perform the task is a counterexample of this, which means that the other models
+are simply too small or require more training or fine-tuning.
+% TODO refer to papers on fine-tuning - out of scope
+
+\subsection{Limitations}
+\label{subsec:limitations}
+
+Other data -> other tasks.
+Larger data.
+
+Reflection on triage - analysis.
+
+Recommendations.

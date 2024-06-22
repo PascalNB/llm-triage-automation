@@ -1,22 +1,27 @@
-\begin{table*}
-    \caption{Accuracies, median evaluation times in seconds and error rates of each model for different prompt sizes
-    when identifying MITRE ATT\&CK tactics of potential alarms following an announcement.}
+\begin{table*}[ht]
+    \caption{
+        Accuracies, median evaluation times in seconds and error rates of each model for different prompt sizes
+        when identifying MITRE ATT\&CK tactics of potential alarms following an announcement.
+        The best statistics are highlighted in \textbf{bold} and the next-best statistics are \underline{underlined}.
+        The median times of GPT-4 are made \textsl{italic} because it is the only model operating within a different
+        system.
+    }
     \label{tab:tactic-detection}
-    \begin{tabular}{lcccccc}
+    \begin{tabular}{lcccc}
         \toprule
-        \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Model}}} & \multicolumn{3}{c}{\textsc{Long prompt}} & \multicolumn{3}{c}{\textsc{Medium prompt}} \\
-        \cmidrule(lr){2-4} \cmidrule(lr){5-7}
-        & Accuracy       & Median time    & Error rate & Accuracy       & Median time    & Error rate \\
+        \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Model}}} & \multicolumn{2}{c}{\textsc{Long prompt}} & \multicolumn{2}{c}{\textsc{Medium prompt}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+        & Accuracy          & Median time    & Accuracy          & Median time    \\
         \midrule
-        \textsc{GPT-4}          & \textbf{0.800} & \textit{2.586} & 0.000      & \textbf{0.800} & \textit{2.539}       & 0.000      \\
-        \textsc{Aya 23\ 8B}     & 0.450          & 1.794          & 0.000      & 0.250          & 2.292          & 0.000      \\
-        \textsc{Code Llama 13B} & 0.450          & 3.658          & 0.000      & 0.600          & 3.989          & 0.000      \\
-        \textsc{Gemma 7B}       & 0.650          & 2.260          & 0.000      & 0.167          & 4.214          & 0.700      \\
-        \textsc{Gemma 2B}       & 0.150          & 0.212          & 0.000      & 0.250          & 0.213          & 0.000      \\
-        \textsc{Llama 3\ 8B}    & 0.550          & 0.680          & 0.000      & 0.450          & 0.817          & 0.000      \\
-        \textsc{Mistral 7B}     & 0.650          & 0.479          & 0.000      & 0.600          & 0.481          & 0.000      \\
-        \textsc{Phi-3 14B}      & 0.700          & 3.885          & 0.000      & 0.200          & 6.031          & 0.000      \\
-        \textsc{Phi-3 3.8B}     & 0.300          & 0.882          & 0.000      & 0.350          & 0.894          & 0.000      \\
+        \textsc{Aya 23\ 8B}     & 0.350             & 2.024          & 0.350             & 1.956          \\
+        \textsc{Code Llama 13B} & 0.450             & 3.793          & 0.550             & 3.823          \\
+        \textsc{Gemma 7B}       & 0.500             & 1.990          & 0.550             & 1.985          \\
+        \textsc{Gemma 2B}       & 0.250             & 0.212          & 0.300             & 0.217          \\
+        \textsc{GPT-4}          & \textbf{0.850}    & \textsl{3.543} & \textbf{0.800}    & \textsl{1.765} \\
+        \textsc{Llama 3\ 8B}    & 0.600             & 0.789          & \underline{0.650} & 0.775          \\
+        \textsc{Mistral 7B}     & \underline{0.700} & 0.464          & 0.600             & 0.504          \\
+        \textsc{Phi-3 14B}      & 0.400             & 4.433          & 0.400             & 3.957          \\
+        \textsc{Phi-3 3.8B}     & 0.400             & 0.900          & 0.300             & 0.890          \\
         \bottomrule
     \end{tabular}
 \end{table*}

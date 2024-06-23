@@ -70,16 +70,32 @@ automating these tasks.
 Besides that, hardware limitations restricted the study to relatively small models, because larger and more powerful
 models had substantial computational requirements.
 This means the study might not reflect the full potential of general LLMs.
-However, the assessment of the included models is still valuable for research into smaller LLMs and environments
-with limited resources.
+However, the assessment of the included models is still valuable for research into smaller LLMs and environments with
+limited resources.
 
 Lastly, there is no formal separation between triage and further alarm analysis, because the only requirement in the
 process is assigning a priority.
 The identified steps of triage are based on examples and consultations with security analysts, but might not be
 applicable in all alarm contexts or SOC environments.
 
-Despite limitations, this study still provides a baseline for understanding how LLMs can be used to automate
-tasks in cybersecurity triage, an evaluation framework to assess and compare LLMs performances, and an overall
-comparison of available general LLMs.
-The insights in this study pave the way to future research with other tasks, models and datasets, as well as
-guiding organizations with practical implementations when optimizing triage.
+Despite limitations, this study still provides a baseline for understanding how LLMs can be used to automate tasks in
+cybersecurity triage, an evaluation framework to assess and compare LLMs performances, and an overall comparison of
+available general LLMs.
+The insights in this study pave the way to future research with other tasks, models and datasets, as well as guiding
+organizations with practical implementations when optimizing triage.
+
+\subsection{Future Works}
+\label{subsec:future-works}
+
+Avenues for further studies include using the given evaluation and comparison framework to offer more extensive
+comparisons between LLMs.
+Studies could include LLMs that are specifically fine-tuned for cybersecurity or other large proprietary models, as
+well as the counterparts of the already-included models like Llama 3 and Mistral.
+
+Additionally, future works can include alarm data to automate and evaluate tasks such as alarm correlation, kill
+chain position identification and priority categorization.
+This results in a more comprehensive assessment of LLMs' capabilities in handling real-world incidents.
+
+Other research could also explore how triage automation affects user interaction with incident response systems, if
+optimizations do decrease the strain on security analysts, and ultimately if it results in fewer security incidents and
+reduced costs and damages.

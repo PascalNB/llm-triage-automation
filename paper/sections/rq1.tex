@@ -158,9 +158,16 @@ The introduction of much larger general models such as GPT-4\ \citep{achiam2023g
 intends to eliminate these problems.
 The broad availability and applicability of these large general models allows organizations to easily integrate them to
 optimize general and specific tasks.
-These models are relatively new and currently have limited research available on their use, but proposed
-applications of fine-tuned LLMs still provide valuable insights into their potential for optimizing triage.
+These models are relatively new and currently have limited research available on their use, but there are some notable
+examples.
 
+\citet{nori2023capabilities} have used GPT-4 to assess its performance on medical tests without fine-tuning.
+The result shows that the model passed the tests without specialized instructions, even surpassing other models that
+are fine-tuned on medical knowledge.
+This shows that the significance of fine-tuning decreases when general models increase in size and capabilities.
+
+In the cybersecurity domain, research on general models is sparse, but applications of fine-tuned LLMs still provide
+valuable insights into their potential for optimizing triage.
 For example,\ \citet{karlsen2024large} propose a system that uses LLMs to perform log analysis.
 Where previous methods of analysis relied on rule-based or statistical approaches, LLMs are able to learn complex
 patterns and relationships within log data without requiring manual feature engineering.
@@ -168,8 +175,6 @@ The study focuses on fine-tuning models such as BERT and GPT-2\ \citep{radford20
 learning where the LLMs automatically label data by identifying relations.
 Larger models like GPT-4 and Llama 2\ \citep{touvron2023llama} were not used due to their high parameter counts,
 leading to increased computational requirements during the fine-tuning process.
-
-(TODO: more examples of applied general models) % TODO
 
 To instruct LLMs to perform tasks, prompts are used.
 They consist of textual inputs that the model interprets and uses to generate contextually relevant responses.

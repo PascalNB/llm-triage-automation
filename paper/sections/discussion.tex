@@ -1,7 +1,11 @@
 \section{Discussion}
 \label{sec:discussion}
 
-Quick summary
+This section will highlight the key findings on the performance of LLMs in cybersecurity tasks, as well as identify
+the limitations of this study.
+The results show that models like GPT-4, Llama 3, Mistral and Phi-3 3.8B excelled in detecting cybersecurity
+announcements, particularly with long prompts.
+GPT-4 also demonstrated the highest accuracy in identifying MITRE ATT\&CK tactics.
 
 \subsection{Analysis}
 \label{subsec:analysis}
@@ -24,8 +28,8 @@ high scores across all three prompt sizes.
 Although GPT-4 has the best scores for long and medium-sized prompts, it falls behind on the short prompt.
 In general, not only do smaller models operate faster than larger models, but Llama 3 and Mistral produce overall better
 results across all tasks and prompts than bigger models like Code Llama and Phi-3 14B\@.
-Consequently, Llama 3, Mistral and Phi-3 3.8B are good choices when automating this task, as well as GPT-4 if processing
-times and are of no concern when integrating a model into an organization.
+Consequently, Llama 3, Mistral and Phi-3 3.8B are good choices when automating this simple task, as well as GPT-4 if
+processing times and its proprietary nature are of no concern when integrating a model into an organization.
 
 Notably, Phi-3 14B is the only model that struggles to adhere to the requested output format with error rates of 0.03,
 0.15 and 0.75 for long, medium and short prompts respectively.
@@ -44,16 +48,38 @@ when an organization strives only to use openly available models.
 Another noteworthy finding is that the accuracy does not significantly differ between prompt sizes.
 One reason for this could be that the medium prompt is not of sufficient quality and the long prompt is of equal quality
 but contains additional redundant information, resulting in equally low accuracies.
-However, GPT-4's ability to accurately perform the task is a counterexample of this, which means that the other models
+However, GPT-4's ability to accurately perform the task is a counterexample to this, which means that the other models
 are simply too small or require more training or fine-tuning.
-% TODO refer to papers on fine-tuning - out of scope
+Although many papers conclude that fine-tuning yields higher performances, they do not include recent LLMs such as
+GPT-4 as a comparison.
+Besides that, fine-tuning is out of scope for this study, which focuses solely on the performance of general LLMs.
 
 \subsection{Limitations}
 \label{subsec:limitations}
 
-Other data -> other tasks.
-Larger data.
+This study faces several limitations that impact the generalizability of the findings.
+Firstly, the datasets of 40 emails for announcement detection and 20 emails for tactic detection are small.
+These sizes limit the robustness of the results, which might not accurately reflect real-world scenarios.
+To draw more definitive conclusions about the models' performances, larger and more diverse datasets are needed.
 
-Reflection on triage - analysis.
+Secondly, the absence of actual alarm data hindered the ability to conduct an evaluation for other tasks that are
+critical in cybersecurity triage.
+This gap limits the scope of the assessment, because organizations might still desire a comparison of LLMs when
+automating these tasks.
 
-Recommendations.
+Besides that, hardware limitations restricted the study to relatively small models, because larger and more powerful
+models had substantial computational requirements.
+This means the study might not reflect the full potential of general LLMs.
+However, the assessment of the included models is still valuable for research into smaller LLMs and environments
+with limited resources.
+
+Lastly, there is no formal separation between triage and further alarm analysis, because the only requirement in the
+process is assigning a priority.
+The identified steps of triage are based on examples and consultations with security analysts, but might not be
+applicable in all alarm contexts or SOC environments.
+
+Despite limitations, this study still provides a baseline for understanding how LLMs can be used to automate
+tasks in cybersecurity triage, an evaluation framework to assess and compare LLMs performances, and an overall
+comparison of available general LLMs.
+The insights in this study pave the way to future research with other tasks, models and datasets, as well as
+guiding organizations with practical implementations when optimizing triage.

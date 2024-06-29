@@ -41,6 +41,7 @@ The different models and their sizes and characteristics are as follows:
 The evaluation framework is written in Python and contained within a Jupyter Notebook.
 This supports transparency and replicability of the experiment because the code can be executed on other future LLMs to
 assess and compare their performances.
+The code of the framework is available on GitHub (\url{https://github.com/PascalNB/llm-triage-automation}).
 
 For each task, prompts of different lengths are constructed to assess the impact of prompt size on the model's
 performance.
@@ -50,6 +51,11 @@ Complex tasks are not possible to execute with short prompts due to the lack of 
 The data used in this study consists of 20 cybersecurity announcement emails provided by Northwave Cyber Security.
 The emails are manually analyzed to determine what possible alarms could be generated as a consequence of the announced
 actions, after which the MITRE ATT\&CK tactics are identified.
+For example, an email announcing that a certain person will add accounts as admins to local and production servers
+is assigned the following tactics: 1) privilege escalation: accounts are given higher permissions on a system;
+2) persistence: maintaining high-level access by modifying permission groups ensures persistence;
+3) initial access: logins through valid accounts could indicate initial access.
+
 Additionally, 20 non-announcement emails are randomly taken from the Enron email dataset.
 
 Using this data, the following tasks are evaluated:

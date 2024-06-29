@@ -4,18 +4,19 @@
 %-------------------------------------------------------------------------------
 % TEMPLATE
 %-------------------------------------------------------------------------------
-\documentclass[balance=false,nonacm,sigconf]{acmart}
+%\documentclass[acmtog, authorversion]{acmart}
+\documentclass[sigconf]{acmart}
 
 \settopmatter{printacmref=false} % Removes citation information below abstract
-\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+%\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
 
 \AtBeginDocument{%
     \providecommand\BibTeX{{%
         \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
 
 % support special characters
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
 
 %-------------------------------------------------------------------------------
 % PACKAGES FOR URL
@@ -31,10 +32,6 @@
 \usepackage{adjustbox}
 \usepackage{color,colortbl,xcolor}
 \usepackage{array}
-%\newcolumntype{L}[1]{>{\raggedright\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{C}[1]{>{\centering\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{R}[1]{>{\raggedleft\renewcommand{\newline}{\\}\arraybackslash\hspace{0pt}}m{#1}}
-
 
 %-------------------------------------------------------------------------------
 % PACKAGES FOR FIGURES
@@ -59,6 +56,9 @@
 \copyrightyear{2024}
 \acmYear{2024}
 
+\acmConference[TScIT 41]{41\textsuperscript{st} Twente Student Conference on IT}{July 5, 2024}{
+    Enschede, The Netherlands}
+
 %-------------------------------------------------------------------------------
 % BEGIN DOCUMENT
 %-------------------------------------------------------------------------------
@@ -76,7 +76,7 @@
 \email{p.n.bakker@student.utwente.nl}
 \affiliation{%
     \institution{University of Twente}
-    \country{}
+    \country{The Netherlands}
 }
 
 %-------------------------------------------------------------------------------

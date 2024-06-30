@@ -3,27 +3,29 @@
         F1-scores, median evaluation times in seconds and error rates of each model for different prompt sizes when
         performing announcement detection.
         The best statistics are highlighted in \textbf{bold} and the next-best statistics are \underline{underlined}.
+        The parameter count of GPT-4 is made \textsl{italic} because it is an estimation.
         The median times of GPT-4 are made \textsl{italic} because it is the only model operating within a different
         system.
         Error rates of 0 are excluded.
     }
     \label{tab:announcement-detection}
     \resizebox{\linewidth}{!}{
-        \begin{tabular}{lccccccccc}
+        \begin{tabular}{lrccccccccc}
             \toprule
-            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Model}}} & \multicolumn{3}{c}{\textsc{Long prompt}} & \multicolumn{3}{c}{\textsc{Medium prompt}} & \multicolumn{3}{c}{\textsc{Short prompt}} \\
-            \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
-            & F1-score          & Median time    & Error rate & F1-score          & Median time    & Error rate & F1-score          & Median time   & Error rate \\
+            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Model}}} & \multicolumn{1}{c}{\multirow{2}{*}{Parameters}} &
+            \multicolumn{3}{c}{\textsc{Long prompt}} & \multicolumn{3}{c}{\textsc{Medium prompt}} & \multicolumn{3}{c}{\textsc{Short prompt}} \\
+            \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
+            &                & F1-score          & Median time    & Error rate & F1-score          & Median time    & Error rate & F1-score          & Median time   & Error rate \\
             \midrule
-            \textsc{Aya 23\ 8B}     & \underline{0.844} & 1.513          & -          & 0.809             & 1.421          & -          & 0.516             & 1.394                & -          \\
-            \textsc{Code Llama 13B} & \textbf{1.000}    & 3.426          & -          & 0.706             & 3.389          & -          & 0.529             & 3.315                & -          \\
-            \textsc{Gemma 7B}       & 0.710             & 1.787          & -          & 0.710             & 1.687          & -          & 0.684             & 1.680                & -          \\
-            \textsc{Gemma 2B}       & 0.788             & 0.194          & -          & 0.333             & 0.192          & -          & 0.667             & 0.192                & -          \\
-            \textsc{GPT-4}          & \textbf{1.000}    & \textsl{8.456} & -          & \textbf{0.950}    & \textsl{7.541} & -          & 0.621             & \textsl{10.940}      & -          \\
-            \textsc{Llama 3\ 8B}    & \textbf{1.000}    & 0.656          & -          & 0.900             & 0.619          & -          & \textbf{0.837}    & 0.623                & -          \\
-            \textsc{Mistral 7B}     & \textbf{1.000}    & 0.487          & -          & 0.895             & 0.411          & -          & \underline{0.743} & 0.405                & -          \\
-            \textsc{Phi-3 14B}      & 0.842             & 3.946          & 0.025      & 0.452             & 2.952          & 0.150      & 0.600             & 2.974                & 0.750      \\
-            \textsc{Phi-3 3.8B}     & \textbf{1.000}    & 0.355          & -          & \underline{0.927} & 0.375          & -          & 0.706             & 0.875                & -          \\
+            \textsc{GPT-4}      & \textsl{1760B} & \textbf{1.000}    & \textsl{8.456} & -          & \textbf{0.950}    & \textsl{7.541} & -          & 0.621             & \textsl{10.940} & -          \\
+            \textsc{Phi-3}      & 14B            & 0.842             & 3.946          & 0.025      & 0.452             & 2.952          & 0.150      & 0.600             & 2.974           & 0.750      \\
+            \textsc{Code Llama} & 13B            & \textbf{1.000}    & 3.426          & -          & 0.706             & 3.389          & -          & 0.529             & 3.315           & -          \\
+            \textsc{Aya 23}     & 8B             & \underline{0.844} & 1.513          & -          & 0.809             & 1.421          & -          & 0.516             & 1.394           & -          \\
+            \textsc{Llama 3}    & 8B             & \textbf{1.000}    & 0.656          & -          & 0.900             & 0.619          & -          & \textbf{0.837}    & 0.623           & -          \\
+            \textsc{Gemma}      & 7B             & 0.710             & 1.787          & -          & 0.710             & 1.687          & -          & 0.684             & 1.680           & -          \\
+            \textsc{Mistral}    & 7B             & \textbf{1.000}    & 0.487          & -          & 0.895             & 0.411          & -          & \underline{0.743} & 0.405           & -          \\
+            \textsc{Phi-3}      & 3.8B           & \textbf{1.000}    & 0.355          & -          & \underline{0.927} & 0.375          & -          & 0.706             & 0.875           & -          \\
+            \textsc{Gemma}      & 2B             & 0.788             & 0.194          & -          & 0.333             & 0.192          & -          & 0.667             & 0.192           & -          \\
             \bottomrule
         \end{tabular}
     }

@@ -11,7 +11,7 @@ After that, the comparison results are provided.
 \subsection{Comparison Framework and Setup}
 \label{subsec:rq3-comparison-framework}
 
-The first LLM that is included in the comparison is GPT-4.
+The first LLM included in the comparison is GPT-4.
 The other models selected are openly available and accessible through the Ollama\ \citep{ollama} library.
 The Ollama language model platform is chosen for its ease of use and its simplicity to deploy the most recent
 state-of-the-art models.
@@ -24,39 +24,31 @@ in contrast to a small model.
 Due to computational limits, only models with parameter counts of up to 14 billion have been selected.
 The selected models are Aya 23\ \citep{aryabumi2024aya}, Code Llama\ \citep{roziere2023code},
 Gemma\ \citep{team2024gemma}, Llama 3, Mistral\ \citep{jiang2023mistral} and Phi-3\ \citep{abdin2024phi}.
-The different models and their sizes and characteristics are as follows:
-\begin{itemize}
-    \item \textbf{GPT-4:} Developed by OpenAI as their fourth generation in their GPT series.
-    It is estimated to have 1.76 trillion parameters.
-    \item \textbf{Aya 23\ 8B:} A multilingual model developed by Cohere that supports 23 languages.
-    \item \textbf{Code Llama 13B:} A fine-tuned Llama model by Meta and designed for generating and discussing code.
-    \item \textbf{Gemma 7B:} Part of a family of lightweight models developed by Google DeepMind.
-    \item \textbf{Gemma 2B:} The smallest model variant of the Gemma model family.
-    \item \textbf{Llama 3\ 8B:} A capable pre-trained model developed by Meta and the third in their Llama series.
-    \item \textbf{Mistral 7B:} A versatile model developed by Mistral AI\@.
-    \item \textbf{Phi-3 14B:} A lightweight open model developed by Microsoft tailored to logic reasoning.
-    \item \textbf{Phi-3 3.8B:} The smallest model variant in the Phi-3 series.
-\end{itemize}
+The different models and their sizes and characteristics are given in Table\ \ref{tab:llm-selection}.
+The Ollama models use a 4-bit quantization as is provided by default.
+
+\input{tabs/llm-selection}
 
 The evaluation framework is written in Python and contained within a Jupyter Notebook.
 This supports transparency and replicability of the experiment because the code can be executed on other future LLMs to
 assess and compare their performances.
-The code of the framework is available on GitHub (\url{https://github.com/PascalNB/llm-triage-automation}).
 
 For each task, prompts of different lengths are constructed to assess the impact of prompt size on the model's
 performance.
 Complex tasks are not possible to execute with short prompts due to the lack of sufficient information.
 
-% TODO cite
 The data used in this study consists of 20 cybersecurity announcement emails provided by Northwave Cyber Security.
 The emails are manually analyzed to determine what possible alarms could be generated as a consequence of the announced
 actions, after which the MITRE ATT\&CK tactics are identified.
-For example, an email announcing that a certain person will add accounts as admins to local and production servers
-is assigned the following tactics: 1) privilege escalation: accounts are given higher permissions on a system;
+For example, an email announcing that a certain person will add accounts as admins to local and production servers is
+assigned the following tactics: 1) privilege escalation: accounts are given higher permissions on a system;
 2) persistence: maintaining high-level access by modifying permission groups ensures persistence;
 3) initial access: logins through valid accounts could indicate initial access.
 
-Additionally, 20 non-announcement emails are randomly taken from the Enron email dataset.
+Additionally, 20 non-announcement emails are randomly taken from the Enron email dataset\ \citep{enron} to construct a
+joined dataset of 40 labeled emails.
+The code of the framework and the used data and prompts are available on
+GitHub (\url{https://github.com/PascalNB/llm-triage-automation}).
 
 Using this data, the following tasks are evaluated:
 \begin{enumerate}
@@ -86,34 +78,10 @@ Using this data, the following tasks are evaluated:
     The resulting evaluation metrics are accuracy, median time and error rate.
 \end{enumerate}
 
-Besides requesting a response in JSON, both OpenAI and Ollama models can be formally instructed to exclusively output
+Besides requesting a JSON response, both OpenAI and Ollama models can be formally instructed to exclusively output
 JSON, ensuring that their outputs adhere to the correct format.
 This, however, does not prevent the model from inventing its own JSON keys or values.
 Such a response will be considered an error and affects the model's error rate.
 
 Finally, all evaluations are conducted within the Jupyter Notebook running with an AMD Ryzen 7\ 4800H CPU and an NVIDIA
 GeForce RTX 2060 GPU\@.
-
-\subsection{Comparison Results}
-\label{subsec:rq3-comparison-results}
-
-The task of detecting cybersecurity announcements was performed using the three prompt sizes on all nine models.
-An overview of the results is presented in Table\ \ref{tab:announcement-detection}.
-
-\input{tabs/announcement-detection}
-
-For the long prompt, GPT-4, Code Llama, Llama 3, Mistral and Phi-3\ 3.8B scored equally high with an F1-score of 1.
-GPT-4 also scored high with the medium prompt with an F1-score of 0.95, which Phi-3 3.8B and Llama 3 closely followed
-with scores of 0.927 and 0.9 respectively.
-Llama 3 scored the highest on the task with the short prompt with a score of 0.837.
-
-The task of detecting the MITRE ATT\&CK tactic of potential alarms following an email announcement was performed using
-the two prompt sizes on all nine models.
-An overview of the results is presented in Table\ \ref{tab:tactic-detection}.
-
-\input{tabs/tactic-detection}
-
-GPT-4 showed the highest accuracy for both the long and medium-sized prompts with scores of 0.85 and 0.8 respectively.
-Mistral was generally the second-best model with accuracies of 0.7 and 0.6.
-Llama 3 followed this with scores of 0.6 and 0.65.
-All models performed error-free results, which is why error rates are excluded from the final result.

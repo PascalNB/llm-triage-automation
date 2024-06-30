@@ -1,14 +1,32 @@
-\section{Discussion}
+\section{Results and Discussion}
 \label{sec:discussion}
 
-This section will highlight the key findings on the performance of LLMs in cybersecurity tasks, as well as identify
-the limitations of this study.
+This section will give an overview of the results and highlight the key findings on the performance of LLMs in
+cybersecurity tasks, as well as identify the limitations of this study.
 The results show that models like GPT-4, Llama 3, Mistral and Phi-3 3.8B excelled in detecting cybersecurity
 announcements, particularly with long prompts.
 GPT-4 also demonstrated the highest accuracy in identifying MITRE ATT\&CK tactics.
 
-\subsection{Analysis}
-\label{subsec:analysis}
+The task of detecting cybersecurity announcements was performed using the three prompt sizes on all nine models.
+An overview of the results is presented in Table\ \ref{tab:announcement-detection}.
+
+\input{tabs/announcement-detection}
+
+For the long prompt, GPT-4, Code Llama, Llama 3, Mistral and Phi-3\ 3.8B scored equally high with an F1-score of 1.
+GPT-4 also scored high with the medium prompt with an F1-score of 0.95, which Phi-3 3.8B and Llama 3 closely followed
+with scores of 0.927 and 0.9 respectively.
+Llama 3 scored the highest on the task with the short prompt with a score of 0.837.
+
+The task of detecting the MITRE ATT\&CK tactic of potential alarms following an email announcement was performed using
+the two prompt sizes on all nine models.
+An overview of the results is presented in Table\ \ref{tab:tactic-detection}.
+
+\input{tabs/tactic-detection}
+
+GPT-4 showed the highest accuracy for both the long and medium-sized prompts with scores of 0.85 and 0.8 respectively.
+Mistral was generally the second-best model with accuracies of 0.7 and 0.6.
+Llama 3 followed this with scores of 0.6 and 0.65.
+All models performed error-free results, which is why error rates are excluded from the table.
 
 Firstly, it is important to note that GPT-4 is the only model not operating within the same system as the other models.
 Changes in median times could be attributed to increased network traffic, server requests or timeouts, but the exact
@@ -23,15 +41,15 @@ size.
 This suggests that prompt size does not have a significant impact on the evaluation time.
 Therefore, the choice of best prompt is dependent only on the resulting performance score.
 
-Considering the simple task of detecting announcements, only Llama 3, Mistral and Phi-3 3.8B show relatively consistent
-high scores across all three prompt sizes.
-Although GPT-4 has the best scores for long and medium-sized prompts, it falls behind on the short prompt.
-In general, not only do smaller models operate faster than larger models, but Llama 3 and Mistral produce overall better
-results across all tasks and prompts than bigger models like Code Llama and Phi-3 14B\@.
+Considering the simple task of detecting announcements, only Llama 3, Mistral and Phi-3 3.8B showed relatively
+consistent high scores across all three prompt sizes.
+Although GPT-4 had the best scores for long and medium-sized prompts, it fell behind on the short prompt.
+In general, not only did smaller models operate faster than larger models, but Llama 3 and Mistral produced overall
+better results across all tasks and prompts than bigger models like Code Llama and Phi-3 14B\@.
 Consequently, Llama 3, Mistral and Phi-3 3.8B are good choices when automating this simple task, as well as GPT-4 if
 processing times and its proprietary nature are of no concern when integrating a model into an organization.
 
-Notably, Phi-3 14B is the only model that struggles to adhere to the requested output format with error rates of 0.03,
+Notably, Phi-3 14B is the only model that struggled to adhere to the requested output format with error rates of 0.03,
 0.15 and 0.75 for long, medium and short prompts respectively.
 All errors can be attributed to the model's frequent inability to spell \texttt{is\_announcement} correctly.
 This makes the model unreliable for simple tasks such as announcement detection.
@@ -39,8 +57,10 @@ This makes the model unreliable for simple tasks such as announcement detection.
 
 On the task of detecting the MITRE ATT\&CK tactic of potentially generated alarms following a cybersecurity
 announcement, only GPT-4 displayed a level of competence.
-Although Llama 3 and Mistral had the second-best statistics, their accuracies can still be considered insufficient.
-All other models demonstrate a low accuracy, which highlights the difficulty in providing a comprehensive description
+Although Llama 3 and Mistral had the second-best statistics, their accuracies can still be considered insufficient,
+because an incorrect categorization for at least 30\% of the time can have drastic effects within the incident response
+workflow.
+All other models demonstrated a low accuracy, which highlights the difficulty in providing a comprehensive description
 of the task within a single prompt.
 Models like Llama 3 and Mistral should thus only be considered in cases where a short evaluation time is critical or
 when an organization strives only to use openly available models.
@@ -50,6 +70,8 @@ One reason for this could be that the medium prompt is not of sufficient quality
 but contains additional redundant information, resulting in equally low accuracies.
 However, GPT-4's ability to accurately perform the task is a counterexample to this, which means that the other models
 are simply too small or require more training or fine-tuning.
+For example, smaller models might not have been trained on the required MITRE ATT\&CK date and thus lack the knowledge
+to detect tactics.
 Although many papers conclude that fine-tuning yields higher performances, they do not include recent LLMs such as
 GPT-4 as a comparison.
 Besides that, fine-tuning is out of scope for this study, which focuses solely on the performance of general LLMs.

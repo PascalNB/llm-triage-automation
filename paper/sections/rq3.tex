@@ -80,8 +80,9 @@ Using this data, the following tasks are evaluated:
 
 Besides requesting a JSON response, both OpenAI and Ollama models can be formally instructed to exclusively output
 JSON, ensuring that their outputs adhere to the correct format.
-This, however, does not prevent the model from inventing its own JSON keys or values.
-Such a response will be considered an error and affects the model's error rate.
+However, this does not cover which keys should be included in the final response, as those should be included in the
+prompt itself.
+A response that lacks the requested keys will be considered an error and affects the model's error rate.
 
 Finally, all evaluations are conducted within the Jupyter Notebook running with an AMD Ryzen 7\ 4800H CPU and an NVIDIA
 GeForce RTX 2060 GPU\@.

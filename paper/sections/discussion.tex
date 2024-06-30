@@ -70,7 +70,7 @@ One reason for this could be that the medium prompt is not of sufficient quality
 but contains additional redundant information, resulting in equally low accuracies.
 However, GPT-4's ability to accurately perform the task is a counterexample to this, which means that the other models
 are simply too small or require more training or fine-tuning.
-For example, smaller models might not have been trained on the required MITRE ATT\&CK date and thus lack the knowledge
+For example, smaller models might not have been trained on the required MITRE ATT\&CK data and thus lack the knowledge
 to detect tactics.
 Although many papers conclude that fine-tuning yields higher performances, they do not include recent LLMs such as
 GPT-4 as a comparison.
@@ -95,6 +95,11 @@ This means the study might not reflect the full potential of general LLMs.
 However, the assessment of the included models is still valuable for research into smaller LLMs and environments with
 limited resources.
 
+Additionally, this research is only focused on general LLMs and excludes fine-tuned models which could yield higher
+performances on specific tasks.
+Despite this, the results are still valuable to organizations which do not have the resources to create custom
+fine-tuned models.
+
 Lastly, there is no formal separation between triage and further alarm analysis, because the only requirement in the
 process is assigning a priority.
 The identified steps of triage are based on examples and consultations with security analysts, but might not be
@@ -112,7 +117,7 @@ organizations with practical implementations when optimizing triage.
 Avenues for further studies include using the given evaluation and comparison framework to offer more extensive
 comparisons between LLMs.
 Studies could include LLMs that are specifically fine-tuned for cybersecurity or other large proprietary models, as
-well as the counterparts of the already-included models like Llama 3 and Mistral.
+well as the larger counterparts of the already-included models like Llama 3 and Mistral.
 
 Additionally, future works can include alarm data to automate and evaluate tasks such as alarm correlation, kill
 chain position identification and priority categorization.
